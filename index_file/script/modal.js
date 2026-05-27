@@ -115,9 +115,9 @@ async function saveEdit() {
     action: 'update',
     rowNum,
     // ── ผู้ใส่ข้อมูล ────────────────────────────
-    ชื่อผู้แจ้ง:     document.getElementById('e-rep').value.trim(),
-    ตำแหน่ง:        document.getElementById('e-pos').value.trim(),
-    หน่วยงานผู้แจ้ง: document.getElementById('e-ag').value.trim(),
+    ชื่อผู้ใส่ข้อมูล: document.getElementById('e-rep').value.trim(),
+    ตำแหน่ง:         document.getElementById('e-pos').value.trim(),
+    หน่วยงาน:        document.getElementById('e-ag').value.trim(),
 
     ชื่อสถานประกอบการ: document.getElementById('e-name').value.trim(),
     ที่ตั้ง:            document.getElementById('e-loc').value.trim(),
