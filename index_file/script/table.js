@@ -155,6 +155,7 @@ function applyFilter() {
 
     return `<tr>
       <td><strong>${r[C.no]   || ''}</strong></td>
+      <td><button class="btn-edit" onclick="openEdit(this,${i})">✏️ แก้ไข</button></td>
       <td><strong>${r[C.name] || '-'}</strong></td>
       <td>${r[C.loc]   || '-'}</td>
       <td>${r[C.type]  || '-'}</td>
@@ -183,7 +184,7 @@ function applyFilter() {
       <td>${r[C.note] || '-'}</td>
       <td>${r[C.rep]  || '-'}</td>
       <td>${r[C.ag]   || '-'}</td>
-      <td><button class="btn-edit" onclick="openEdit(this,${i})">✏️ แก้ไข</button></td>
+      
     </tr>`;
   }).join('');
 }
