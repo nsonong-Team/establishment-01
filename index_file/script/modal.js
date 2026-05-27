@@ -13,8 +13,15 @@ function openEdit(btn, filteredIdx) {
   const C = colMap;
   currentFilteredIdx = filteredIdx;
 
-  // ── basic fields ← หายไปทั้งหมด เพิ่มกลับ ──
+  // ── basic fields ──
+  // ── ผู้ใส่ข้อมูล ────────────────────────────
   document.getElementById('editRowNum').value = r[C.no]    || '';
+
+  document.getElementById('e-rep').value      = r[C.rep]   || '';
+  document.getElementById('e-pos').value      = r[C.pos]   || '';
+  document.getElementById('e-ag').value       = r[C.ag]    || '';
+  document.getElementById('e-date').value     = r[C.date]  || '';
+
   document.getElementById('e-name').value     = r[C.name]  || '';
   document.getElementById('e-loc').value      = r[C.loc]   || '';
   document.getElementById('e-type').value     = r[C.type]  || '';
@@ -107,6 +114,11 @@ async function saveEdit() {
   const updateData = {
     action: 'update',
     rowNum,
+    // ── ผู้ใส่ข้อมูล ────────────────────────────
+    ชื่อผู้แจ้ง:     document.getElementById('e-rep').value.trim(),
+    ตำแหน่ง:        document.getElementById('e-pos').value.trim(),
+    หน่วยงานผู้แจ้ง: document.getElementById('e-ag').value.trim(),
+
     ชื่อสถานประกอบการ: document.getElementById('e-name').value.trim(),
     ที่ตั้ง:            document.getElementById('e-loc').value.trim(),
     ประเภทสินค้า:      document.getElementById('e-type').value.trim(),

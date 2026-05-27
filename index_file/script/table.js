@@ -88,7 +88,7 @@ async function quickUpdateTier(rowNo, selectEl) {
 // ── Load all rows from Google Sheets ──────────────
 async function loadTableData() {
   const tbody = document.getElementById('tableBody');
-  tbody.innerHTML = '<tr><td colspan="30" style="text-align:center;padding:40px;color:#90a4ae">⏳ กำลังโหลด...</td></tr>';
+  tbody.innerHTML = '<tr><td colspan="31" style="text-align:center;padding:40px;color:#90a4ae">⏳ กำลังโหลด...</td></tr>';
 
   try {
     const res  = await fetch(GAS_URL + '?action=getSheetData');
@@ -96,7 +96,7 @@ async function loadTableData() {
 
     if (!data.rows || data.rows.length === 0) {
       allRows = [];
-      tbody.innerHTML = '<tr><td colspan="30"><div class="empty-state"><div class="big-icon">📋</div><div>ยังไม่มีข้อมูล</div></div></td></tr>';
+      tbody.innerHTML = '<tr><td colspan="31"><div class="empty-state"><div class="big-icon">📋</div><div>ยังไม่มีข้อมูล</div></div></td></tr>';
       return;
     }
     colMap  = getColMap(buildIdx(data.headers));
@@ -109,7 +109,7 @@ async function loadTableData() {
 
     applyFilter();
   } catch (e) {
-    tbody.innerHTML = '<tr><td colspan="30" style="text-align:center;color:#c62828;padding:30px">❌ ไม่สามารถโหลดข้อมูลได้</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="31" style="text-align:center;color:#c62828;padding:30px">❌ ไม่สามารถโหลดข้อมูลได้</td></tr>';
   }
 }
 
@@ -140,7 +140,7 @@ function applyFilter() {
   const tbody  = document.getElementById('tableBody');
 
   if (filtered.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="30"><div class="empty-state"><div class="big-icon">🔍</div><div>ไม่พบข้อมูลที่ตรงกัน</div></div></td></tr>'
+    tbody.innerHTML = '<tr><td colspan="31"><div class="empty-state"><div class="big-icon">🔍</div><div>ไม่พบข้อมูลที่ตรงกัน</div></div></td></tr>'
     return;
   }
 
@@ -184,6 +184,7 @@ function applyFilter() {
       <td>${r[C.note] || '-'}</td>
       <td>${r[C.rep]  || '-'}</td>
       <td>${r[C.ag]   || '-'}</td>
+      <td>${r[C.date] || '-'}</td>
       
     </tr>`;
   }).join('');
