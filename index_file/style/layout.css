@@ -1,0 +1,76 @@
+/* ── Content Wrapper ── */
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+/* ── Panel ── */
+.panel {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 18px;
+}
+
+.panel-title {
+  font-family: 'Prompt', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e3eaf6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-title .icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--primary), #3f51b5);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* ── Form Grid ── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-grid.three {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* ── Dashboard KPI Grid ── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .form-grid,
+  .form-grid.three,
+  .kpi-grid,
+  .dash-grid,
+  .tier-selector,
+  .checkbox-group {
+    grid-template-columns: 1fr;
+  }
+}

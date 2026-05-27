@@ -1,0 +1,142 @@
+/* ══════════════════════════════
+   Table
+══════════════════════════════ */
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  min-width: 860px;
+}
+
+thead tr {
+  background: var(--primary);
+  color: #fff;
+}
+
+th {
+  padding: 9px 11px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  padding: 8px 11px;
+  border-bottom: 1px solid #eceff1;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) { background: #f5f9ff; }
+tbody tr:hover           { background: #e8f0fe; }
+
+/* ── Brand Badge ── */
+.badge {
+  display: inline-block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ── Edit Button ── */
+.btn-edit {
+  background: #e3eaf6;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-edit:hover { background: #c5d8f8; }
+
+/* ══════════════════════════════
+   Filter Bar
+══════════════════════════════ */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  align-items: center;
+}
+
+.filter-bar label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.filter-select {
+  padding: 6px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 13px;
+  color: var(--text-b);
+  background: #fafbfd;
+  outline: none;
+  cursor: pointer;
+  width: auto;
+}
+
+.filter-select:focus { border-color: var(--primary-l); }
+
+.filter-input {
+  padding: 6px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 13px;
+  background: #fafbfd;
+  outline: none;
+  width: 180px;
+}
+
+.filter-input:focus { border-color: var(--primary-l); }
+
+.filter-count {
+  font-size: 12px;
+  color: #78909c;
+  margin-left: auto;
+}
+
+.btn-clear-filter {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 12px;
+  color: #78909c;
+  cursor: pointer;
+}
+
+.btn-clear-filter:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-refresh {
+  background: #e3eaf6;
+  border: none;
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 13px;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-refresh:hover { background: #c5d8f8; }

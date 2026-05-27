@@ -1,0 +1,194 @@
+/* ══════════════════════════════
+   KPI Cards
+══════════════════════════════ */
+.kpi-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.kpi-card.c1::before { background: linear-gradient(90deg, #0d47a1, #42a5f5); }
+.kpi-card.c2::before { background: linear-gradient(90deg, #e65100, #ffa726); }
+.kpi-card.c3::before { background: linear-gradient(90deg, #2e7d32, #66bb6a); }
+.kpi-card.c4::before { background: linear-gradient(90deg, #6a1b9a, #ab47bc); }
+
+.kpi-num {
+  font-family: 'Prompt', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.kpi-label {
+  font-size: 12px;
+  color: #78909c;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* ══════════════════════════════
+   Chart Panel
+══════════════════════════════ */
+.chart-panel {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.chart-title {
+  font-family: 'Prompt', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+/* ── Bar Chart ── */
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 9px;
+}
+
+.bar-label {
+  width: 120px;
+  font-size: 12px;
+  color: var(--text-b);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.bar-track {
+  flex: 1;
+  height: 22px;
+  background: #eceff1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.6s ease;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+}
+
+.bar-val {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ── Donut Chart ── */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.donut {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.donut-hole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-total {
+  font-family: 'Prompt', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.donut-sub {
+  font-size: 10px;
+  color: #90a4ae;
+}
+
+/* ── Legend ── */
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ── Channel Cards ── */
+.ch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ch-card {
+  background: #f8faff;
+  border: 1.5px solid #e3eaf6;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ch-icon  { font-size: 22px; }
+
+.ch-count {
+  font-family: 'Prompt', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.ch-name {
+  font-size: 11px;
+  color: #78909c;
+}

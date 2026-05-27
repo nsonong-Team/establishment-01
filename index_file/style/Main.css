@@ -1,0 +1,14 @@
+/* ══════════════════════════════════════════════════
+   main.css — Entry point
+   Import order matters: variables → base → ...
+══════════════════════════════════════════════════ */
+
+@import url('variables.css');   /* CSS custom properties        */
+@import url('base.css');        /* Reset, body, toast, spinner  */
+@import url('layout.css');      /* Grid, panel, content wrapper */
+@import url('header.css');      /* Header + tab bar             */
+@import url('forms.css');       /* Inputs, checkboxes, buttons  */
+@import url('tiers.css');       /* Tier cards, badges, dropdown */
+@import url('table.css');       /* Table, filter bar            */
+@import url('dashboard.css');   /* KPI cards, charts            */
+@import url('modal.css');       /* Edit modal                   */

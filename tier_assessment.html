@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ประเมินระดับ TIER ผู้ประกอบการ</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tier_assessment/style/style.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-badge">🎯 เครื่องมือประเมิน</div>
+    <h1>ประเมินระดับ TIER ผู้ประกอบการ</h1>
+    <p>ติ๊กรายการที่ผู้ประกอบการมีคุณสมบัติ ระบบจะพิจารณา TIER ให้อัตโนมัติ</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- เลือกสถานประกอบการ -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏭</div>เลือกสถานประกอบการที่ต้องการประเมิน</div>
+    <div class="search-wrap" id="searchWrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="bizSearch" placeholder="พิมพ์เพื่อค้นหาสถานประกอบการ..." oninput="filterBiz()" onfocus="openDropdown()" autocomplete="off">
+      <div class="dropdown" id="bizDropdown"></div>
+    </div>
+    <div class="selected-biz" id="selectedBiz">
+      <span>✅ </span><span id="selectedName"></span>
+      <button onclick="clearSelected()" title="ล้างการเลือก">✕</button>
+    </div>
+    <div class="manual-row">
+      <input type="checkbox" id="chkManual" onchange="toggleManual()">
+      <label for="chkManual" style="cursor:pointer">พิมพ์ชื่อเอง (กรณียังไม่มีในระบบ)</label>
+    </div>
+    <div id="manualWrap" style="display:none;margin-top:10px">
+      <input type="text" id="bizManual" placeholder="พิมพ์ชื่อสถานประกอบการ...">
+    </div>
+  </div>
+
+  <!-- Result bar sticky -->
+  <div class="result-bar">
+    <div>
+      <div style="font-size:11px;color:#90a4ae;margin-bottom:2px">ผลประเมิน</div>
+      <div class="tier-big" id="resTier" style="color:#90a4ae">—</div>
+    </div>
+    <div class="prog-wrap">
+      <div class="prog-row">
+        <div class="prog-label" style="color:var(--t1)">TIER 1</div>
+        <div class="prog-track"><div class="prog-fill" id="p1" style="background:var(--t1)"></div></div>
+        <div class="prog-num" id="c1" style="color:var(--t1)">0</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label" style="color:var(--t2)">TIER 2</div>
+        <div class="prog-track"><div class="prog-fill" id="p2" style="background:var(--t2)"></div></div>
+        <div class="prog-num" id="c2" style="color:var(--t2)">0</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label" style="color:var(--t3)">TIER 3</div>
+        <div class="prog-track"><div class="prog-fill" id="p3" style="background:var(--t3)"></div></div>
+        <div class="prog-num" id="c3" style="color:var(--t3)">0</div>
+      </div>
+    </div>
+    <div class="result-badge" id="resBadge">ยังไม่ได้ประเมิน</div>
+    <div id="resultHint" style="font-size:12px;color:#90a4ae;display:none;line-height:1.5">
+      📋 จดผลไว้แล้วนำไปเลือกใน<br><strong style="color:var(--primary)">ระบบหลัก → กรอกข้อมูล → ระดับ TIER</strong>
+    </div>
+    <button class="btn-save" id="btnSave" onclick="saveTier()">💾 บันทึก TIER ลงระบบ</button>
+  </div>
+
+  <!-- Checklist -->
+  <div id="checklistContainer"></div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="tier_assessment/script/script.js"></script>
+</body>
+</html>
