@@ -2,7 +2,7 @@
 //  script.js — Tier Assessment Logic
 // ══════════════════════════════════════════════════
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxlU1mKWVby6F8RPbsZTlhacisIVMvs-D4TAW_m6l3hbhlC8x7NPUJOGCJLpHxCShkz/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzXumPn7FLpFzyOaDdvhHctTg1-KhUpVaCDYlu2Hhf1pKyULhr_4a_r7AifLCzpc9nV0w/exec';
 
 // ── Checklist Data ─────────────────────────────────
 const SECTIONS = [
@@ -246,7 +246,7 @@ async function loadBizNames() {
       document.getElementById('chkManual').checked = true; toggleManual(); return;
     }
     // สร้าง list จาก column ที่ 1 (ชื่อสถานประกอบการ)
-    allBizList = data.rows.map((r, i) => ({ row: i + 2, name: r[1] })).filter(r => r.name);
+    allBizList = data.rows.map((r, i) => ({ row: i + 2, name: r[4] })).filter(r => r.name);
   } catch (e) {
     document.getElementById('bizSearch').placeholder = '— โหลดไม่สำเร็จ ลองพิมพ์เองด้านล่าง —';
     document.getElementById('chkManual').checked = true; toggleManual();
