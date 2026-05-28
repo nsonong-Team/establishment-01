@@ -29,17 +29,1023 @@
 </div>
 
 <div class="content">
-  <div id="tab-dash"></div>
-  <div id="tab-establishment" style="display:none"></div>
-  <div id="tab-activity"      style="display:none"></div>
-  <div id="tab-promotion"     style="display:none"></div>
-  <div id="tab-overview"      style="display:none"></div>
+
+<!-- DASHBOARD -->
+<div id="tab-dash">
+
+  <!-- ── KPI Row ── -->
+  <div class="kpi-grid">
+    <div class="kpi-card c1"><div class="kpi-num" id="kpi-total">—</div><div class="kpi-label">ผู้ประกอบการทั้งหมด</div></div>
+    <div class="kpi-card c2"><div class="kpi-num" id="kpi-tier1">—</div><div class="kpi-label">TIER 1</div></div>
+    <div class="kpi-card c3"><div class="kpi-num" id="kpi-tier2">—</div><div class="kpi-label">TIER 2</div></div>
+    <div class="kpi-card c4"><div class="kpi-num" id="kpi-tier3">—</div><div class="kpi-label">TIER 3</div></div>
+  </div>
+
+  <!-- ── Donut + ช่องทางการตลาด ── -->
+  <div class="dash-grid">
+    <div class="chart-panel">
+      <div class="chart-title">🎯 สัดส่วนตาม TIER</div>
+      <div class="donut-wrap">
+        <div class="donut" id="donutTier">
+          <div class="donut-hole"><div class="donut-total" id="donutTotal">0</div><div class="donut-sub">ทั้งหมด</div></div>
+        </div>
+        <div class="legend" id="tierLegend"></div>
+      </div>
+    </div>
+    <div class="chart-panel">
+      <div class="chart-title">📢 ช่องทางการตลาด</div>
+      <div class="ch-grid">
+        <div class="ch-card"><div class="ch-icon">🌏</div><div><div class="ch-count" id="ch-export">—</div><div class="ch-name">ส่งออกต่างประเทศ</div></div></div>
+        <div class="ch-card"><div class="ch-icon">🇹🇭</div><div><div class="ch-count" id="ch-dom">—</div><div class="ch-name">ในประเทศ</div></div></div>
+        <div class="ch-card"><div class="ch-icon">💻</div><div><div class="ch-count" id="ch-online">—</div><div class="ch-name">ออนไลน์</div></div></div>
+        <div class="ch-card"><div class="ch-icon">🏪</div><div><div class="ch-count" id="ch-local">—</div><div class="ch-name">ขายในพื้นที่</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ประเภทสินค้า + หน่วยงาน ── -->
+  <div class="dash-grid" style="margin-top:18px">
+    <div class="chart-panel">
+      <div class="chart-title">🏷️ ประเภทสินค้า / บริการ (Top 8)</div>
+      <div id="typeChart"><div style="color:#90a4ae;font-size:13px">ยังไม่มีข้อมูล</div></div>
+    </div>
+    <div class="chart-panel">
+      <div class="chart-title">🏛️ จำนวนผู้ประกอบการแยกตามหน่วยงาน</div>
+      <div id="agencyChart"><div style="color:#90a4ae;font-size:13px">ยังไม่มีข้อมูล</div></div>
+    </div>
+  </div>
+
+  <!-- ── Section: ผลการดำเนินงาน ── -->
+  <div class="dash-section-title" style="margin-top:28px;margin-bottom:14px;font-size:15px;font-weight:700;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:8px">
+    📋 สถิติผลการดำเนินงาน
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card c1"><div class="kpi-num" id="kpi-act-train">—</div><div class="kpi-label">เข้าอบรม/สัมมนา</div></div>
+    <div class="kpi-card c2"><div class="kpi-num" id="kpi-act-study">—</div><div class="kpi-label">ศึกษาดูงาน</div></div>
+    <div class="kpi-card c3"><div class="kpi-num" id="kpi-act-sales">—</div><div class="kpi-label">ออกบูธ/จำหน่าย</div></div>
+    <div class="kpi-card c4"><div class="kpi-num" id="kpi-act-value">—</div><div class="kpi-label">มูลค่าจำหน่ายรวม (บาท)</div></div>
+  </div>
+
+  <div class="chart-panel" style="margin-top:18px">
+    <div class="chart-title">💰 มูลค่าจำหน่ายแยกตามช่องทาง</div>
+    <div id="salesChart"><div style="color:#90a4ae;font-size:13px">ยังไม่มีข้อมูล</div></div>
+  </div>
+
+  <!-- ── Section: การส่งเสริม/พัฒนา ── -->
+  <div class="dash-section-title" style="margin-top:28px;margin-bottom:14px;font-size:15px;font-weight:700;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:8px">
+    🚀 สถิติการส่งเสริม / พัฒนาผู้ประกอบการ
+  </div>
+
+  <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="kpi-card c1"><div class="kpi-num" id="kpi-pro-total">—</div><div class="kpi-label">ผู้ประกอบการที่เข้าร่วม</div></div>
+    <div class="kpi-card c2"><div class="kpi-num" id="kpi-pro-top">—</div><div class="kpi-label">หมวดที่ถูกเลือกมากสุด</div></div>
+    <div class="kpi-card c3"><div class="kpi-num" id="kpi-pro-items">—</div><div class="kpi-label">รายการที่ถูกเลือกทั้งหมด</div></div>
+  </div>
+
+  <div class="chart-panel" style="margin-top:18px">
+    <div class="chart-title">⭐ Top 5 กิจกรรมที่ถูกเลือกมากสุด</div>
+    <div id="proTopChart"><div style="color:#90a4ae;font-size:13px">ยังไม่มีข้อมูล</div></div>
+  </div>
+
+  <div class="chart-panel" style="margin-top:18px">
+    <div class="chart-title">📊 สัดส่วนการเลือกแต่ละหมวด</div>
+    <div id="proHmwdChart"><div style="color:#90a4ae;font-size:13px">ยังไม่มีข้อมูล</div></div>
+  </div>
+
 </div>
 
-<div id="modals-container"></div>
+<!-- ESTABLISHMENT -->
+<div id="tab-establishment" style="display:none">
+  <div class="sub-tab-bar">
+    <button class="sub-tab-btn active" onclick="showSubTab('est','form')">📝 กรอกข้อมูล</button>
+    <button class="sub-tab-btn" onclick="showSubTab('est','view')">📋 ดูข้อมูล</button>
+  </div>
+
+  <div id="sub-est-form">
+
+  <!-- ── ผู้ใส่ข้อมูล ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">👤</div>ชื่อผู้ใส่ข้อมูล</div>
+    <div class="search-wrap" id="repSearchWrap" style="position:relative;margin-bottom:10px">
+      <input type="text" id="repSearch" placeholder="พิมพ์ชื่อเพื่อค้นหา..." oninput="filterRep()" autocomplete="off">
+      <div class="dropdown" id="repDropdown"></div>
+    </div>
+    <div class="form-grid three">
+      <div class="form-group"><label>ชื่อผู้ใส่ข้อมูล</label><input type="text" id="ชื่อใส่ข้อมูล" placeholder="ชื่อ - นามสกุล..."></div>
+      <div class="form-group"><label>ตำแหน่ง</label><input type="text" id="ตำแหน่ง" placeholder="ตำแหน่งงาน..."></div>
+      <div class="form-group"><label>หน่วยงาน</label><input type="text" id="หน่วยงานผู้ใส่ข้อมูล" placeholder="ชื่อหน่วยงาน / สังกัด..."></div>
+    </div>
+  </div>
+
+  <!-- ── ข้อมูลสถานประกอบการ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏭</div>ข้อมูลสถานประกอบการ</div>
+    <div class="form-grid">
+      <div class="form-group"><label>ชื่อสถานประกอบการ <span class="required">*</span></label><input type="text" id="ชื่อสถานประกอบการ" placeholder="ชื่อกิจการ / ร้านค้า..."></div>
+      <div class="form-group"><label>ที่ตั้งสถานประกอบการ</label><input type="text" id="ที่ตั้ง" placeholder="ที่อยู่ / ตำบล / อำเภอ / จังหวัด..."></div>
+      <div class="form-group"><label>หมายเลขโทรศัพท์</label><input type="text" id="โทรศัพท์" placeholder="0X-XXXX-XXXX..."></div>
+    </div>
+  </div>
+
+  <!-- ── รายละเอียดการประกอบกิจการ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">📊</div>รายละเอียดการประกอบกิจการ</div>
+    <div class="form-grid three" style="margin-bottom:14px">
+      <div class="form-group"><label>จำนวนสมาชิก (ราย)</label><input type="number" id="จำนวนสมาชิก" placeholder="0" min="0"></div>
+      <div class="form-group"><label>กำลังการผลิต (ต่อเดือน)</label><input type="text" id="กำลังการผลิต" placeholder="เช่น 100 กก./เดือน"></div>
+      <div class="form-group"><label>รายได้เฉลี่ย (ต่อเดือน)</label><input type="number" id="รายได้เฉลี่ย" placeholder="บาท" min="0"></div>
+    </div>
+    <div class="form-group">
+      <label>ชื่อแบรนด์สินค้าที่ออกตลาด</label>
+      <input type="text" id="ชื่อแบรนด์" placeholder="ชื่อแบรนด์สินค้า...">
+    </div>
+  </div>
+
+  <!-- ── ประเภทผู้ประกอบการ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏷️</div>ประเภทผู้ประกอบการ</div>
+    <div class="checkbox-group">
+      <div class="check-item" id="item-OTOP"           onclick="toggleCheck('OTOP')"><div class="checkmark">✓</div><span>OTOP</span></div>
+      <div class="check-item" id="item-SMEs"           onclick="toggleCheck('SMEs')"><div class="checkmark">✓</div><span>SMEs</span></div>
+      <div class="check-item" id="item-วิสาหกิจชุมชน" onclick="toggleCheck('วิสาหกิจชุมชน')"><div class="checkmark">✓</div><span>วิสาหกิจชุมชน</span></div>
+      <div class="check-item" id="item-StartUp"        onclick="toggleCheck('StartUp')"><div class="checkmark">✓</div><span>Start Up</span></div>
+      <div class="check-item" id="item-บริษัทฯ"        onclick="toggleCheck('บริษัทฯ')"><div class="checkmark">✓</div><span>บริษัท/ห้างหุ้นส่วน/ร้านค้า</span></div>
+    </div>
+    <div class="form-group" style="margin-top:14px">
+      <label>อื่นๆ (โปรดระบุ)</label>
+      <input type="text" id="ประเภทผู้ประกอบการ_อื่นๆ" placeholder="ระบุประเภทอื่น...">
+    </div>
+  </div>
+
+  <!-- ── ข้อมูลสินค้า ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🛍️</div>ข้อมูลสินค้า</div>
+    <div class="form-group" style="margin-bottom:10px"><label>ประเภทสินค้า / บริการ</label></div>
+    <div class="checkbox-group">
+      <div class="check-item" id="item-สินค้าอาหาร"   onclick="toggleCheck('สินค้าอาหาร')"><div class="checkmark">✓</div><span>🍽️ อาหารและเครื่องดื่ม</span></div>
+      <div class="check-item" id="item-สินค้าผ้า"     onclick="toggleCheck('สินค้าผ้า')"><div class="checkmark">✓</div><span>👗 ผ้าและเครื่องแต่งกาย</span></div>
+      <div class="check-item" id="item-สินค้าของใช้"  onclick="toggleCheck('สินค้าของใช้')"><div class="checkmark">✓</div><span>🏠 ของใช้/ของประดับ/ของที่ระลึก</span></div>
+      <div class="check-item" id="item-สินค้าสมุนไพร" onclick="toggleCheck('สินค้าสมุนไพร')"><div class="checkmark">✓</div><span>🌿 สมุนไพรที่ไม่ใช่อาหาร</span></div>
+      <div class="check-item" id="item-สินค้าเกษตร"  onclick="toggleCheck('สินค้าเกษตร')"><div class="checkmark">✓</div><span>🌾 สินค้าเกษตร/เกษตรแปรรูป</span></div>
+    </div>
+    <div class="form-group" style="margin-top:14px">
+      <label>อื่นๆ (โปรดระบุ)</label>
+      <input type="text" id="ประเภทสินค้า_อื่นๆ" placeholder="ระบุประเภทสินค้าอื่น...">
+    </div>
+  </div>
+
+  <!-- ── มาตรฐานที่ได้รับ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏅</div>มาตรฐานที่ได้รับ</div>
+    <div class="checkbox-group">
+      <div class="check-item" id="item-OTOP3-5"        onclick="toggleCheck('OTOP3-5')"><div class="checkmark">✓</div><span>⭐ OTOP 3-5 ดาว</span></div>
+      <div class="check-item" id="item-มผช"            onclick="toggleCheck('มผช')"><div class="checkmark">✓</div><span>มผช.</span></div>
+      <div class="check-item" id="item-อย"             onclick="toggleCheck('อย')"><div class="checkmark">✓</div><span>อย.</span></div>
+      <div class="check-item" id="item-GAP"            onclick="toggleCheck('GAP')"><div class="checkmark">✓</div><span>GAP</span></div>
+      <div class="check-item" id="item-GMP"            onclick="toggleCheck('GMP')"><div class="checkmark">✓</div><span>GMP</span></div>
+      <div class="check-item" id="item-NBLBrand"       onclick="toggleCheck('NBLBrand')"><div class="checkmark">✓</div><span>🏷️ Nong Bua Lamphu Brand</span></div>
+    </div>
+    <div class="form-group" style="margin-top:14px">
+      <label>อื่นๆ (โปรดระบุ)</label>
+      <input type="text" id="มาตรฐาน_อื่นๆ" placeholder="ระบุมาตรฐานอื่น...">
+    </div>
+  </div>
+
+  <!-- ── TIER ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🎯</div>ระดับ TIER</div>
+    <div class="tier-selector">
+      <div class="tier-card" id="tc-1" onclick="selectTier(1)">
+        <div class="t-num n1">TIER 1</div>
+        <div class="t-desc">ผู้ประกอบการพร้อมส่งออก<br>มาตรฐานสากล · B2B ต่างประเทศ</div>
+      </div>
+      <div class="tier-card" id="tc-2" onclick="selectTier(2)">
+        <div class="t-num n2">TIER 2</div>
+        <div class="t-desc">ผู้ประกอบการกำลังพัฒนา<br>มาตรฐานระดับประเทศ · B2C</div>
+      </div>
+      <div class="tier-card" id="tc-3" onclick="selectTier(3)">
+        <div class="t-num n3">TIER 3</div>
+        <div class="t-desc">ผู้ประกอบการเริ่มต้น<br>ก่อตั้ง ≤ 5 ปี · ช่องทางจำกัด</div>
+      </div>
+    </div>
+    <div class="tier-hint">💡 ไม่แน่ใจว่าควรอยู่ TIER ใด?
+      <a href="tier_assessment.html" target="_blank">เปิดเครื่องมือประเมิน TIER อัตโนมัติ ↗</a>
+    </div>
+  </div>
+
+  <!-- ── หมายเหตุ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">📝</div>หมายเหตุ</div>
+    <div class="form-group">
+      <textarea id="หมายเหตุ" placeholder="หมายเหตุเพิ่มเติม (ถ้ามี)..."></textarea>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:8px">
+    <button class="btn-submit" id="btnSubmit" onclick="handleSubmit()">
+      <span id="btnText">💾 บันทึกข้อมูล</span>
+    </button>
+  </div>
+</div>
+
+  <div id="sub-est-view" style="display:none">
+    <div class="panel">
+      <div class="panel-title"><div class="icon">📋</div>ข้อมูลผู้ประกอบการทั้งหมด</div>
+      <div class="filter-bar">
+        <label>🔍 ค้นหา:</label>
+        <input class="filter-input" id="fSearch" placeholder="ชื่อสถานประกอบการ..." oninput="applyFilter()">
+        <label>TIER:</label>
+        <select class="filter-select" id="fTier" onchange="applyFilter()">
+          <option value="">ทั้งหมด</option>
+          <option value="TIER 1">TIER 1</option>
+          <option value="TIER 2">TIER 2</option>
+          <option value="TIER 3">TIER 3</option>
+          <option value="ยังไม่ระบุ">ยังไม่ระบุ</option>
+        </select>
+        <label>ประเภทสินค้า:</label>
+        <select class="filter-select" id="fType" onchange="applyFilter()">
+          <option value="">ทั้งหมด</option>
+        </select>
+        <label>ช่องทาง:</label>
+        <select class="filter-select" id="fChannel" onchange="applyFilter()">
+          <option value="">ทั้งหมด</option>
+          <option value="export">ส่งออกต่างประเทศ</option>
+          <option value="dom">ในประเทศ</option>
+          <option value="online">ออนไลน์</option>
+          <option value="local">ขายในพื้นที่</option>
+        </select>
+        <span class="filter-count" id="filterCount"></span>
+        <button class="btn-clear-filter" onclick="clearFilter()">✕ ล้าง</button>
+        <button class="btn-refresh" onclick="loadTableData()">🔄 รีเฟรช</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th><th>แก้ไข</th>
+            <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+            <th>ชื่อสถานประกอบการ</th><th>ที่ตั้ง</th><th>โทรศัพท์</th>
+            <th>สมาชิก</th><th>กำลังผลิต</th><th>รายได้/เดือน</th>
+            <th>แบรนด์</th><th>ประเภทผู้ประกอบการ</th>
+            <th>ประเภทสินค้า</th><th>มาตรฐาน</th>
+            <th>TIER</th><th>หมายเหตุ</th><th>วันที่บันทึก</th>
+          </tr></thead>
+          <tbody id="tableBody">
+            <tr><td colspan="32"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- /sub-est-view -->
+</div><!-- /tab-establishment -->
+
+<!-- ACTIVITY -->
+<div id="tab-activity" style="display:none">
+  <div class="sub-tab-bar">
+    <button class="sub-tab-btn active" onclick="showSubTab('act','form')">📝 กรอกข้อมูล</button>
+    <button class="sub-tab-btn" onclick="showSubTab('act','view')">📋 ดูข้อมูล</button>
+  </div>
+  <div id="sub-act-form">
+
+  <!-- ── ผู้ใส่ข้อมูล ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">👤</div>ชื่อผู้ใส่ข้อมูล</div>
+    <div class="form-grid three">
+      <div class="form-group"><label>ชื่อผู้ใส่ข้อมูล</label><input type="text" id="act-rep" placeholder="ชื่อ - นามสกุล..."></div>
+      <div class="form-group"><label>ตำแหน่ง</label><input type="text" id="act-pos" placeholder="ตำแหน่งงาน..."></div>
+      <div class="form-group"><label>หน่วยงาน</label><input type="text" id="act-ag" placeholder="ชื่อหน่วยงาน / สังกัด..."></div>
+    </div>
+  </div>
+
+  <!-- ── ข้อมูลสถานประกอบการ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏭</div>ข้อมูลสถานประกอบการ</div>
+    <div class="form-group">
+      <label>ชื่อสถานประกอบการ <span class="required">*</span></label>
+      <input type="text" id="act-biz" placeholder="ชื่อกิจการ / ร้านค้า...">
+    </div>
+  </div>
+
+  <!-- ── อบรม / สัมมนา ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🎓</div>อบรม / สัมมนา</div>
+      <div class="form-grid">
+        <div class="form-group"><label>ช่วงเวลาที่อบรม</label><input type="text" id="act-tr-period" placeholder="เช่น ม.ค. 2568"></div>
+        <div class="form-group"><label>สถานที่อบรม</label><input type="text" id="act-tr-place" placeholder="สถานที่จัดอบรม..."></div>
+        <div class="form-group"><label>หัวข้อที่อบรม</label><input type="text" id="act-tr-topic" placeholder="หัวข้ออบรม..."></div>
+        <div class="form-group"><label>หน่วยงานที่จัดอบรม</label><input type="text" id="act-tr-org" placeholder="ชื่อหน่วยงาน..."></div>
+      </div>
+    </div>
+
+    <!-- ── ศึกษาดูงาน ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🔍</div>ศึกษาดูงาน</div>
+      <div class="form-grid">
+        <div class="form-group"><label>ช่วงเวลาที่ดูงาน</label><input type="text" id="act-st-period" placeholder="เช่น ม.ค. 2568"></div>
+        <div class="form-group"><label>สถานที่ดูงาน</label><input type="text" id="act-st-place" placeholder="สถานที่ดูงาน..."></div>
+        <div class="form-group"><label>หัวข้อที่ดูงาน</label><input type="text" id="act-st-topic" placeholder="หัวข้อดูงาน..."></div>
+        <div class="form-group"><label>หน่วยงานที่จัด</label><input type="text" id="act-st-org" placeholder="ชื่อหน่วยงาน..."></div>
+        <div class="form-group"><label>ผลการดำเนินงาน</label><input type="text" id="act-st-result" placeholder="ผลที่ได้รับ..."></div>
+      </div>
+    </div>
+
+    <!-- ── ช่องทางการจำหน่ายสินค้า ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🛒</div>ช่องทางการจำหน่ายสินค้า</div>
+      <div class="form-grid" style="margin-bottom:14px">
+        <div class="form-group"><label>ช่วงเวลาขายสินค้า</label><input type="text" id="act-sa-period" placeholder="เช่น ม.ค. 2568"></div>
+        <div class="form-group"><label>สถานที่ขายสินค้า</label><input type="text" id="act-sa-place" placeholder="สถานที่จำหน่าย..."></div>
+        <div class="form-group"><label>ชื่องาน</label><input type="text" id="act-sa-event" placeholder="ชื่องาน/กิจกรรม..."></div>
+        <div class="form-group"><label>หน่วยงานที่จัด</label><input type="text" id="act-sa-org" placeholder="ชื่อหน่วยงาน..."></div>
+      </div>
+
+      <!-- ช่องทางการจำหน่าย + มูลค่า -->
+      <div class="panel-title" style="font-size:13px;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">💰 ช่องทางการจำหน่าย</div>
+
+      <div class="channel-row">
+        <div class="check-item" id="act-item-ในจังหวัด" onclick="toggleActCheck('ในจังหวัด')">
+          <div class="checkmark">✓</div><span>🏠 ภายในจังหวัด</span>
+        </div>
+        <div class="form-group" style="margin:0">
+          <input type="number" id="act-sa-local-val" placeholder="มูลค่า (บาท)" min="0">
+        </div>
+      </div>
+
+      <div class="channel-row">
+        <div class="check-item" id="act-item-ต่างจังหวัด" onclick="toggleActCheck('ต่างจังหวัด')">
+          <div class="checkmark">✓</div><span>🚚 ต่างจังหวัด</span>
+        </div>
+        <div class="form-group" style="margin:0">
+          <input type="number" id="act-sa-other-val" placeholder="มูลค่า (บาท)" min="0">
+        </div>
+      </div>
+
+      <div class="channel-row">
+        <div class="check-item" id="act-item-ModernTrade" onclick="toggleActCheck('ModernTrade')">
+          <div class="checkmark">✓</div><span>🏪 Modern Trade</span>
+        </div>
+        <div class="form-group" style="margin:0">
+          <input type="number" id="act-sa-modern-val" placeholder="มูลค่า (บาท)" min="0">
+        </div>
+      </div>
+
+      <div class="channel-row">
+        <div class="check-item" id="act-item-ต่างประเทศ" onclick="toggleActCheck('ต่างประเทศ')">
+          <div class="checkmark">✓</div><span>🌏 ต่างประเทศ</span>
+        </div>
+        <div class="form-group" style="margin:0">
+          <input type="number" id="act-sa-export-val" placeholder="มูลค่า (บาท)" min="0">
+        </div>
+      </div>
+      
+      <div class="channel-row">
+        <div class="check-item" id="act-item-อื่นๆ" onclick="toggleActCheck('อื่นๆ')">
+          <div class="checkmark">✓</div><span>📦 อื่นๆ</span>
+        </div>
+        <div class="form-group" style="margin:0">
+          <input type="text" id="act-sa-other-name" placeholder="ระบุช่องทางอื่น...">
+        </div>
+      </div>
+    </div>
+
+    <!-- ── หมายเหตุ ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">📝</div>หมายเหตุ</div>
+      <div class="form-group">
+        <textarea id="act-note" placeholder="หมายเหตุเพิ่มเติม (ถ้ามี)..."></textarea>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:8px">
+      <button class="btn-submit" id="btnSubmitAct" onclick="handleSubmitAct()">
+        <span id="btnTextAct">💾 บันทึกข้อมูล</span>
+      </button>
+    </div>
+  </div>
+  
+  <div id="sub-act-view" style="display:none">
+    <div class="panel">
+      <div class="panel-title"><div class="icon">📋</div>ข้อมูลผลการดำเนินงานทั้งหมด</div>
+      <div class="filter-bar">
+        <label>🔍 ค้นหา:</label>
+        <input class="filter-input" id="actSearch" placeholder="ชื่อผู้ใส่ข้อมูล..." oninput="applyActFilter()">
+        <span class="filter-count" id="actFilterCount"></span>
+        <button class="btn-clear-filter" onclick="clearActFilter()">✕ ล้าง</button>
+        <button class="btn-refresh" onclick="loadActTableData()">🔄 รีเฟรช</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th>
+            <th>แก้ไข</th>
+            <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+            <th>ชื่อสถานประกอบการ</th>
+            <th>อบรม_ช่วงเวลา</th><th>อบรม_สถานที่</th><th>อบรม_หัวข้อ</th><th>อบรม_หน่วยงาน</th>
+            <th>ดูงาน_ช่วงเวลา</th><th>ดูงาน_สถานที่</th><th>ดูงาน_หัวข้อ</th><th>ดูงาน_หน่วยงาน</th><th>ดูงาน_ผล</th>
+            <th>จำหน่าย_ช่วงเวลา</th><th>จำหน่าย_สถานที่</th><th>จำหน่าย_ชื่องาน</th><th>จำหน่าย_หน่วยงาน</th>
+            <th>ช่องทางจำหน่าย</th>
+            <th>หมายเหตุ</th><th>วันที่บันทึก</th>
+          </tr></thead>
+          <tbody id="actTableBody">
+            <tr><td colspan="20"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROMOTION -->
+<div id="tab-promotion" style="display:none">
+  <div class="sub-tab-bar">
+    <button class="sub-tab-btn active" onclick="showSubTab('pro','form')">📝 กรอกข้อมูล</button>
+    <button class="sub-tab-btn" onclick="showSubTab('pro','view')">📋 ดูข้อมูล</button>
+  </div>
+  <div id="sub-pro-form">
+
+    <!-- ── ผู้ใส่ข้อมูล ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">👤</div>ชื่อผู้ใส่ข้อมูล</div>
+      <div class="form-grid three">
+        <div class="form-group"><label>ชื่อผู้ใส่ข้อมูล</label><input type="text" id="pro-rep" placeholder="ชื่อ - นามสกุล..."></div>
+        <div class="form-group"><label>ตำแหน่ง</label><input type="text" id="pro-pos" placeholder="ตำแหน่งงาน..."></div>
+        <div class="form-group"><label>หน่วยงาน</label><input type="text" id="pro-ag" placeholder="ชื่อหน่วยงาน / สังกัด..."></div>
+      </div>
+    </div>
+
+    <!-- ── ข้อมูลสถานประกอบการ ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🏭</div>ข้อมูลสถานประกอบการ</div>
+      <div class="form-group">
+        <label>ชื่อสถานประกอบการ <span class="required">*</span></label>
+        <input type="text" id="pro-biz" placeholder="ชื่อกิจการ / ร้านค้า...">
+      </div>
+    </div>
+
+    <!-- ── หมวด 1 ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">📢</div>1. การตลาดและการสร้างแบรนด์</div>
+      <div class="checkbox-group">
+        <div class="check-item" id="pro-item-หมวด1_การวางแผนกลยุทธ์การตลาด"        onclick="toggleProCheck('หมวด1_การวางแผนกลยุทธ์การตลาด')"><div class="checkmark">✓</div><span>การวางแผนกลยุทธ์การตลาด</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การสร้างแบรนด์"                   onclick="toggleProCheck('หมวด1_การสร้างแบรนด์')"><div class="checkmark">✓</div><span>การสร้างแบรนด์ (Branding)</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การออกแบบบรรจุภัณฑ์"             onclick="toggleProCheck('หมวด1_การออกแบบบรรจุภัณฑ์')"><div class="checkmark">✓</div><span>การออกแบบบรรจุภัณฑ์ (Packaging)</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การเจาะตลาดออนไลน์"              onclick="toggleProCheck('หมวด1_การเจาะตลาดออนไลน์')"><div class="checkmark">✓</div><span>การเจาะตลาดออนไลน์ (E-commerce, Social Commerce)</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การเข้าร่วมงานแสดงสินค้า"        onclick="toggleProCheck('หมวด1_การเข้าร่วมงานแสดงสินค้า')"><div class="checkmark">✓</div><span>การเข้าร่วมงานแสดงสินค้า/เจรจาธุรกิจ</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การวิเคราะห์ตลาด"                onclick="toggleProCheck('หมวด1_การวิเคราะห์ตลาด')"><div class="checkmark">✓</div><span>การวิเคราะห์ตลาดและพฤติกรรมผู้บริโภค</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การสร้างอัตลักษณ์สินค้า"         onclick="toggleProCheck('หมวด1_การสร้างอัตลักษณ์สินค้า')"><div class="checkmark">✓</div><span>การสร้างอัตลักษณ์สินค้า</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การส่งเสริมภูมิปัญญาท้องถิ่น"   onclick="toggleProCheck('หมวด1_การส่งเสริมภูมิปัญญาท้องถิ่น')"><div class="checkmark">✓</div><span>การส่งเสริมภูมิปัญญาท้องถิ่น</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การสร้างเครือข่ายธุรกิจ"         onclick="toggleProCheck('หมวด1_การสร้างเครือข่ายธุรกิจ')"><div class="checkmark">✓</div><span>การสร้างเครือข่ายธุรกิจ (Networking)</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การตลาดออนไลน์เชิงAI"            onclick="toggleProCheck('หมวด1_การตลาดออนไลน์เชิงAI')"><div class="checkmark">✓</div><span>การตลาดออนไลน์เชิง AI</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การสร้างแบรนด์ยั่งยืนBCG"        onclick="toggleProCheck('หมวด1_การสร้างแบรนด์ยั่งยืนBCG')"><div class="checkmark">✓</div><span>การสร้างแบรนด์ยั่งยืนตามแนวทาง BCG</span></div>
+        <div class="check-item" id="pro-item-หมวด1_BigData_AI"                        onclick="toggleProCheck('หมวด1_BigData_AI')"><div class="checkmark">✓</div><span>การใช้ Big Data และ AI เพื่อเจาะตลาดออนไลน์</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การตลาดสีเขียว"                   onclick="toggleProCheck('หมวด1_การตลาดสีเขียว')"><div class="checkmark">✓</div><span>การตลาดสีเขียวและการสื่อสารความยั่งยืน</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การตลาดQRCode"                    onclick="toggleProCheck('หมวด1_การตลาดQRCode')"><div class="checkmark">✓</div><span>การตลาดด้วย QR Code</span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>อื่นๆ (โปรดระบุ)</label>
+        <input type="text" id="pro-หมวด1-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+    </div>
+
+    <!-- ── หมวด 2 ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🏅</div>2. การพัฒนาผลิตภัณฑ์และมาตรฐาน</div>
+      <div class="checkbox-group">
+        <div class="check-item" id="pro-item-หมวด2_การพัฒนาคุณภาพผลผลิต"            onclick="toggleProCheck('หมวด2_การพัฒนาคุณภาพผลผลิต')"><div class="checkmark">✓</div><span>การพัฒนาคุณภาพผลผลิตทางการเกษตร</span></div>
+        <div class="check-item" id="pro-item-หมวด2_การแปรรูปสินค้าเกษตร"             onclick="toggleProCheck('หมวด2_การแปรรูปสินค้าเกษตร')"><div class="checkmark">✓</div><span>การแปรรูปสินค้าเกษตร</span></div>
+        <div class="check-item" id="pro-item-หมวด2_GAP_Organic"                       onclick="toggleProCheck('หมวด2_GAP_Organic')"><div class="checkmark">✓</div><span>การรับรองมาตรฐาน GAP/Organic</span></div>
+        <div class="check-item" id="pro-item-หมวด2_มอก_ISO"                           onclick="toggleProCheck('หมวด2_มอก_ISO')"><div class="checkmark">✓</div><span>การขอรับรอง มอก./ISO</span></div>
+        <div class="check-item" id="pro-item-หมวด2_อย_GMP_HACCP"                      onclick="toggleProCheck('หมวด2_อย_GMP_HACCP')"><div class="checkmark">✓</div><span>การขอ อย./GMP/HACCP</span></div>
+        <div class="check-item" id="pro-item-หมวด2_การพัฒนาสูตรผลิตภัณฑ์"           onclick="toggleProCheck('หมวด2_การพัฒนาสูตรผลิตภัณฑ์')"><div class="checkmark">✓</div><span>การพัฒนาสูตรผลิตภัณฑ์ให้ปลอดภัย</span></div>
+        <div class="check-item" id="pro-item-หมวด2_LabTest"                            onclick="toggleProCheck('หมวด2_LabTest')"><div class="checkmark">✓</div><span>การตรวจสอบคุณภาพสินค้า (Lab Test)</span></div>
+        <div class="check-item" id="pro-item-หมวด2_สุขอนามัยการผลิต"                 onclick="toggleProCheck('หมวด2_สุขอนามัยการผลิต')"><div class="checkmark">✓</div><span>การให้ความรู้ด้านสุขอนามัยในการผลิต</span></div>
+        <div class="check-item" id="pro-item-หมวด2_ฉลากโภชนาการ"                     onclick="toggleProCheck('หมวด2_ฉลากโภชนาการ')"><div class="checkmark">✓</div><span>การติดฉลากโภชนาการ/คำเตือน</span></div>
+        <div class="check-item" id="pro-item-หมวด2_ความเสี่ยงสุขภาพ"                 onclick="toggleProCheck('หมวด2_ความเสี่ยงสุขภาพ')"><div class="checkmark">✓</div><span>การจัดการความเสี่ยงด้านสุขภาพผู้บริโภค</span></div>
+        <div class="check-item" id="pro-item-หมวด2_OTOP"                               onclick="toggleProCheck('หมวด2_OTOP')"><div class="checkmark">✓</div><span>การพัฒนาผลิตภัณฑ์ชุมชน (OTOP)</span></div>
+        <div class="check-item" id="pro-item-หมวด2_ออกแบบผลิตภัณฑ์เชิงอุตสาหกรรม"  onclick="toggleProCheck('หมวด2_ออกแบบผลิตภัณฑ์เชิงอุตสาหกรรม')"><div class="checkmark">✓</div><span>การออกแบบผลิตภัณฑ์เชิงอุตสาหกรรม</span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>อื่นๆ (โปรดระบุ)</label>
+        <input type="text" id="pro-หมวด2-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+    </div>
+
+    <!-- ── หมวด 3 ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🏭</div>3. การผลิตและอุตสาหกรรม</div>
+      <div class="checkbox-group">
+        <div class="check-item" id="pro-item-หมวด3_ต้นทุนการผลิต"                    onclick="toggleProCheck('หมวด3_ต้นทุนการผลิต')"><div class="checkmark">✓</div><span>การจัดการต้นทุนการผลิต</span></div>
+        <div class="check-item" id="pro-item-หมวด3_เทคโนโลยีเกษตรสมัยใหม่"          onclick="toggleProCheck('หมวด3_เทคโนโลยีเกษตรสมัยใหม่')"><div class="checkmark">✓</div><span>การใช้เทคโนโลยีเกษตรสมัยใหม่</span></div>
+        <div class="check-item" id="pro-item-หมวด3_Lean_Productivity"                 onclick="toggleProCheck('หมวด3_Lean_Productivity')"><div class="checkmark">✓</div><span>การพัฒนากระบวนการผลิต (Lean, Productivity)</span></div>
+        <div class="check-item" id="pro-item-หมวด3_มาตรฐานโรงงาน"                    onclick="toggleProCheck('หมวด3_มาตรฐานโรงงาน')"><div class="checkmark">✓</div><span>การยกระดับมาตรฐานโรงงาน/สถานประกอบการ</span></div>
+        <div class="check-item" id="pro-item-หมวด3_เครื่องจักรและเทคโนโลยี"          onclick="toggleProCheck('หมวด3_เครื่องจักรและเทคโนโลยี')"><div class="checkmark">✓</div><span>การใช้เครื่องจักรและเทคโนโลยีใหม่</span></div>
+        <div class="check-item" id="pro-item-หมวด3_สิ่งแวดล้อมโรงงาน"               onclick="toggleProCheck('หมวด3_สิ่งแวดล้อมโรงงาน')"><div class="checkmark">✓</div><span>การจัดการสิ่งแวดล้อมในโรงงาน</span></div>
+        <div class="check-item" id="pro-item-หมวด3_อุตสาหกรรมท้องถิ่น"              onclick="toggleProCheck('หมวด3_อุตสาหกรรมท้องถิ่น')"><div class="checkmark">✓</div><span>การพัฒนาอุตสาหกรรมท้องถิ่น</span></div>
+        <div class="check-item" id="pro-item-หมวด3_อุตสาหกรรม4_0"                   onclick="toggleProCheck('หมวด3_อุตสาหกรรม4_0')"><div class="checkmark">✓</div><span>การยกระดับโรงงานเข้าสู่อุตสาหกรรม ๔.๐</span></div>
+        <div class="check-item" id="pro-item-หมวด3_เชื่อมโยงการผลิตขนาดใหญ่"        onclick="toggleProCheck('หมวด3_เชื่อมโยงการผลิตขนาดใหญ่')"><div class="checkmark">✓</div><span>การเชื่อมโยงกับภาคการผลิตขนาดใหญ่</span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>อื่นๆ (โปรดระบุ)</label>
+        <input type="text" id="pro-หมวด3-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+    </div>
+
+    <!-- ── หมวด 4 ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🤝</div>4. การรวมกลุ่มและการพัฒนาชุมชน</div>
+      <div class="checkbox-group">
+        <div class="check-item" id="pro-item-หมวด4_รวมกลุ่มเกษตรกร"                 onclick="toggleProCheck('หมวด4_รวมกลุ่มเกษตรกร')"><div class="checkmark">✓</div><span>การรวมกลุ่มเกษตรกรเพื่อเพิ่มอำนาจต่อรอง</span></div>
+        <div class="check-item" id="pro-item-หมวด4_รวมกลุ่มพัฒนาศักยภาพ"            onclick="toggleProCheck('หมวด4_รวมกลุ่มพัฒนาศักยภาพ')"><div class="checkmark">✓</div><span>การรวมกลุ่มและพัฒนาศักยภาพกลุ่ม</span></div>
+        <div class="check-item" id="pro-item-หมวด4_แหล่งเรียนรู้ชุมชน"              onclick="toggleProCheck('หมวด4_แหล่งเรียนรู้ชุมชน')"><div class="checkmark">✓</div><span>การพัฒนาแหล่งเรียนรู้ชุมชน</span></div>
+        <div class="check-item" id="pro-item-หมวด4_พัฒนาทักษะแรงงาน"               onclick="toggleProCheck('หมวด4_พัฒนาทักษะแรงงาน')"><div class="checkmark">✓</div><span>การพัฒนาทักษะแรงงาน</span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>อื่นๆ (โปรดระบุ)</label>
+        <input type="text" id="pro-หมวด4-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+    </div>
+
+    <!-- ── หมวด 5 ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">💰</div>5. การบริหารจัดการและการเงิน</div>
+      <div class="checkbox-group">
+        <div class="check-item" id="pro-item-หมวด5_จดทะเบียนเครื่องหมายการค้า"      onclick="toggleProCheck('หมวด5_จดทะเบียนเครื่องหมายการค้า')"><div class="checkmark">✓</div><span>การจดทะเบียนเครื่องหมายการค้า</span></div>
+        <div class="check-item" id="pro-item-หมวด5_บัญชีครัวเรือน"                   onclick="toggleProCheck('หมวด5_บัญชีครัวเรือน')"><div class="checkmark">✓</div><span>การจัดทำบัญชีครัวเรือน/บัญชีต้นทุน</span></div>
+        <div class="check-item" id="pro-item-หมวด5_แหล่งทุน_สินเชื่อ"               onclick="toggleProCheck('หมวด5_แหล่งทุน_สินเชื่อ')"><div class="checkmark">✓</div><span>การเข้าถึงแหล่งทุน/สินเชื่อ</span></div>
+        <div class="check-item" id="pro-item-หมวด5_ภาษี_บัญชี_กฎหมาย"              onclick="toggleProCheck('หมวด5_ภาษี_บัญชี_กฎหมาย')"><div class="checkmark">✓</div><span>การอบรมด้านภาษี/บัญชี/กฎหมายธุรกิจ</span></div>
+        <div class="check-item" id="pro-item-หมวด5_คำปรึกษาการบริหาร"               onclick="toggleProCheck('หมวด5_คำปรึกษาการบริหาร')"><div class="checkmark">✓</div><span>การให้คำปรึกษาด้านการบริหารจัดการ</span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>อื่นๆ (โปรดระบุ)</label>
+        <input type="text" id="pro-หมวด5-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+    </div>
+
+    <!-- ── หมายเหตุ ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">📝</div>หมายเหตุ</div>
+      <div class="form-group">
+        <textarea id="pro-note" placeholder="หมายเหตุเพิ่มเติม (ถ้ามี)..."></textarea>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:8px">
+      <button class="btn-submit" id="btnSubmitPro" onclick="handleSubmitPro()">
+        <span id="btnTextPro">💾 บันทึกข้อมูล</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="sub-pro-view" style="display:none">
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🚀</div>ข้อมูลการส่งเสริม/พัฒนาทั้งหมด</div>
+      <div class="filter-bar">
+        <label>🔍 ค้นหา:</label>
+        <input class="filter-input" id="proSearch" placeholder="ชื่อสถานประกอบการ / ผู้ใส่ข้อมูล..." oninput="applyProFilter()">
+        <span class="filter-count" id="proFilterCount"></span>
+        <button class="btn-clear-filter" onclick="clearProFilter()">✕ ล้าง</button>
+        <button class="btn-refresh" onclick="loadProTableData()">🔄 รีเฟรช</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th><th>แก้ไข</th>
+            <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+            <th>ชื่อสถานประกอบการ</th>
+            <th>หมวด 1 การตลาด</th>
+            <th>หมวด 2 ผลิตภัณฑ์/มาตรฐาน</th>
+            <th>หมวด 3 การผลิต</th>
+            <th>หมวด 4 รวมกลุ่ม</th>
+            <th>หมวด 5 การบริหาร</th>
+            <th>หมายเหตุ</th><th>วันที่บันทึก</th>
+          </tr></thead>
+          <tbody id="proTableBody">
+            <tr><td colspan="13"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div id="tab-overview" style="display:none">
+
+  <!-- ── ข้อมูลผู้ประกอบการ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏭</div>ข้อมูลผู้ประกอบการ</div>
+    <div class="filter-bar">
+      <label>🔍 ค้นหา:</label>
+      <input class="filter-input" id="ovSearch1" placeholder="ชื่อสถานประกอบการ..." oninput="applyOvFilter1()">
+      <span class="filter-count" id="ovCount1"></span>
+      <button class="btn-refresh" onclick="loadOvData1()">🔄 รีเฟรช</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th>
+          <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+          <th>ชื่อสถานประกอบการ</th><th>ที่ตั้ง</th><th>โทรศัพท์</th>
+          <th>สมาชิก</th><th>กำลังผลิต</th><th>รายได้/เดือน</th>
+          <th>แบรนด์</th><th>ประเภทผู้ประกอบการ</th>
+          <th>ประเภทสินค้า</th><th>มาตรฐาน</th>
+          <th>TIER</th><th>หมายเหตุ</th><th>วันที่บันทึก</th>
+        </tr></thead>
+        <tbody id="ovBody1">
+          <tr><td colspan="17"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── ผลการดำเนินงาน ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">📋</div>ผลการดำเนินงาน</div>
+    <div class="filter-bar">
+      <label>🔍 ค้นหา:</label>
+      <input class="filter-input" id="ovSearch2" placeholder="ชื่อสถานประกอบการ..." oninput="applyOvFilter2()">
+      <span class="filter-count" id="ovCount2"></span>
+      <button class="btn-refresh" onclick="loadOvData2()">🔄 รีเฟรช</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th>
+          <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+          <th>ชื่อสถานประกอบการ</th>
+          <th>อบรม_ช่วงเวลา</th><th>อบรม_สถานที่</th><th>อบรม_หัวข้อ</th><th>อบรม_หน่วยงาน</th>
+          <th>ดูงาน_ช่วงเวลา</th><th>ดูงาน_สถานที่</th><th>ดูงาน_หัวข้อ</th><th>ดูงาน_หน่วยงาน</th><th>ดูงาน_ผล</th>
+          <th>ช่องทางจำหน่าย</th>
+          <th>หมายเหตุ</th><th>วันที่บันทึก</th>
+        </tr></thead>
+        <tbody id="ovBody2">
+          <tr><td colspan="17"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── การส่งเสริม/พัฒนา ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🚀</div>การส่งเสริม / พัฒนาผู้ประกอบการ</div>
+    <div class="filter-bar">
+      <label>🔍 ค้นหา:</label>
+      <input class="filter-input" id="ovSearch3" placeholder="ชื่อสถานประกอบการ..." oninput="applyOvFilter3()">
+      <span class="filter-count" id="ovCount3"></span>
+      <button class="btn-refresh" onclick="loadOvData3()">🔄 รีเฟรช</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th>
+          <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+          <th>ชื่อสถานประกอบการ</th>
+          <th>หมวด 1 การตลาด</th>
+          <th>หมวด 2 ผลิตภัณฑ์</th>
+          <th>หมวด 3 การผลิต</th>
+          <th>หมวด 4 รวมกลุ่ม</th>
+          <th>หมวด 5 การบริหาร</th>
+          <th>หมายเหตุ</th><th>วันที่บันทึก</th>
+        </tr></thead>
+        <tbody id="ovBody3">
+          <tr><td colspan="12"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /content -->
+
+<!-- EDIT MODAL -->
+<div class="modal-overlay" id="editModal" style="display:none" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">✏️ แก้ไขข้อมูลสถานประกอบการ</div>
+      <button class="modal-close" onclick="document.getElementById('editModal').style.display='none'">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editRowNum">
+
+      <!-- ── ผู้ใส่ข้อมูล ── -->
+      <div class="form-grid three" style="margin-bottom:14px">
+        <div class="form-group"><label>ผู้ใส่ข้อมูล</label><input type="text" id="e-rep"></div>
+        <div class="form-group"><label>ตำแหน่ง</label><input type="text" id="e-pos"></div>
+        <div class="form-group"><label>หน่วยงาน</label><input type="text" id="e-ag"></div>
+      </div>
+
+      <!-- ── ข้อมูลสถานประกอบการ ── -->
+      <div class="form-grid" style="margin-bottom:14px">
+        <div class="form-group"><label>ชื่อสถานประกอบการ</label><input type="text" id="e-name"></div>
+        <div class="form-group"><label>ที่ตั้ง</label><input type="text" id="e-loc"></div>
+        <div class="form-group"><label>หมายเลขโทรศัพท์</label><input type="text" id="e-phone"></div>
+      </div>
+
+      <!-- ── รายละเอียดกิจการ ── -->
+      <div class="form-grid three" style="margin-bottom:14px">
+        <div class="form-group"><label>จำนวนสมาชิก (ราย)</label><input type="number" id="e-member" min="0"></div>
+        <div class="form-group"><label>กำลังการผลิต (ต่อเดือน)</label><input type="text" id="e-capacity"></div>
+        <div class="form-group"><label>รายได้เฉลี่ย (ต่อเดือน)</label><input type="number" id="e-income" min="0"></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>ชื่อแบรนด์สินค้า</label>
+        <input type="text" id="e-brand">
+      </div>
+
+      <!-- ── ประเภทผู้ประกอบการ ── -->
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">🏷️ ประเภทผู้ประกอบการ</div>
+      <div class="checkbox-group" style="margin-bottom:10px">
+        <div class="check-item" id="e-item-OTOP"           onclick="toggleEditCheck('OTOP')"><div class="checkmark">✓</div><span>OTOP</span></div>
+        <div class="check-item" id="e-item-SMEs"           onclick="toggleEditCheck('SMEs')"><div class="checkmark">✓</div><span>SMEs</span></div>
+        <div class="check-item" id="e-item-วิสาหกิจชุมชน" onclick="toggleEditCheck('วิสาหกิจชุมชน')"><div class="checkmark">✓</div><span>วิสาหกิจชุมชน</span></div>
+        <div class="check-item" id="e-item-StartUp"        onclick="toggleEditCheck('StartUp')"><div class="checkmark">✓</div><span>Start Up</span></div>
+        <div class="check-item" id="e-item-บริษัทฯ"        onclick="toggleEditCheck('บริษัทฯ')"><div class="checkmark">✓</div><span>บริษัท/ห้างหุ้นส่วน/ร้านค้า</span></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>อื่นๆ</label>
+        <input type="text" id="e-ประเภท_อื่นๆ" placeholder="ระบุประเภทอื่น...">
+      </div>
+
+      <!-- ── ประเภทสินค้า ── -->
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">🛍️ ประเภทสินค้า / บริการ</div>
+      <div class="checkbox-group" style="margin-bottom:10px">
+        <div class="check-item" id="e-item-สินค้าอาหาร"   onclick="toggleEditCheck('สินค้าอาหาร')"><div class="checkmark">✓</div><span>🍽️ อาหารและเครื่องดื่ม</span></div>
+        <div class="check-item" id="e-item-สินค้าผ้า"     onclick="toggleEditCheck('สินค้าผ้า')"><div class="checkmark">✓</div><span>👗 ผ้าและเครื่องแต่งกาย</span></div>
+        <div class="check-item" id="e-item-สินค้าของใช้"  onclick="toggleEditCheck('สินค้าของใช้')"><div class="checkmark">✓</div><span>🏠 ของใช้/ของประดับ/ของที่ระลึก</span></div>
+        <div class="check-item" id="e-item-สินค้าสมุนไพร" onclick="toggleEditCheck('สินค้าสมุนไพร')"><div class="checkmark">✓</div><span>🌿 สมุนไพรที่ไม่ใช่อาหาร</span></div>
+        <div class="check-item" id="e-item-สินค้าเกษตร"  onclick="toggleEditCheck('สินค้าเกษตร')"><div class="checkmark">✓</div><span>🌾 สินค้าเกษตร/เกษตรแปรรูป</span></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>อื่นๆ</label>
+        <input type="text" id="e-สินค้า_อื่นๆ" placeholder="ระบุประเภทสินค้าอื่น...">
+      </div>
+
+      <!-- ── มาตรฐาน ── -->
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">🏅 มาตรฐานที่ได้รับ</div>
+      <div class="checkbox-group" style="margin-bottom:10px">
+        <div class="check-item" id="e-item-OTOP3-5"   onclick="toggleEditCheck('OTOP3-5')"><div class="checkmark">✓</div><span>⭐ OTOP 3-5 ดาว</span></div>
+        <div class="check-item" id="e-item-มผช"       onclick="toggleEditCheck('มผช')"><div class="checkmark">✓</div><span>มผช.</span></div>
+        <div class="check-item" id="e-item-อย"        onclick="toggleEditCheck('อย')"><div class="checkmark">✓</div><span>อย.</span></div>
+        <div class="check-item" id="e-item-GAP"       onclick="toggleEditCheck('GAP')"><div class="checkmark">✓</div><span>GAP</span></div>
+        <div class="check-item" id="e-item-GMP"       onclick="toggleEditCheck('GMP')"><div class="checkmark">✓</div><span>GMP</span></div>
+        <div class="check-item" id="e-item-NBLBrand"  onclick="toggleEditCheck('NBLBrand')"><div class="checkmark">✓</div><span>🏷️ Nong Bua Lamphu Brand</span></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>อื่นๆ</label>
+        <input type="text" id="e-มาตรฐาน_อื่นๆ" placeholder="ระบุมาตรฐานอื่น...">
+      </div>
+
+      <!-- ── TIER ── -->
+      <div class="form-group" style="margin-bottom:14px">
+        <label>ระดับ TIER</label>
+        <div class="modal-tier-sel">
+          <div class="modal-tier-card" id="et1" onclick="selectEditTier(1)">TIER 1<br><span style="font-size:10px;font-weight:400">พร้อมส่งออก</span></div>
+          <div class="modal-tier-card" id="et2" onclick="selectEditTier(2)">TIER 2<br><span style="font-size:10px;font-weight:400">กำลังพัฒนา</span></div>
+          <div class="modal-tier-card" id="et3" onclick="selectEditTier(3)">TIER 3<br><span style="font-size:10px;font-weight:400">เริ่มต้น</span></div>
+        </div>
+      </div>
+
+      <!-- ── หมายเหตุ + วันที่ ── -->
+      <div class="form-group" style="margin-bottom:14px">
+        <label>หมายเหตุ</label>
+        <textarea id="e-note" style="min-height:60px"></textarea>
+      </div>
+      <div class="form-group">
+        <label>วันที่บันทึก</label>
+        <input type="text" id="e-date" disabled style="background:#f5f5f5;color:#78909c">
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="document.getElementById('editModal').style.display='none'">ยกเลิก</button>
+      <button class="btn-save-edit" id="btnSaveEdit" onclick="saveEdit()">💾 บันทึกการแก้ไข</button>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVITY EDIT MODAL -->
+<div class="modal-overlay" id="actEditModal" style="display:none" onclick="closeActModal(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">✏️ แก้ไขข้อมูลผลการดำเนินงาน</div>
+      <button class="modal-close" onclick="document.getElementById('actEditModal').style.display='none'">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="actEditRowNum">
+
+      <div class="form-grid three" style="margin-bottom:14px">
+        <div class="form-group"><label>ผู้ใส่ข้อมูล</label><input type="text" id="ae-rep"></div>
+        <div class="form-group"><label>ตำแหน่ง</label><input type="text" id="ae-pos"></div>
+        <div class="form-group"><label>หน่วยงาน</label><input type="text" id="ae-ag"></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>ชื่อสถานประกอบการ</label>
+        <input type="text" id="ae-biz">
+      </div>
+
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">🎓 อบรม / สัมมนา</div>
+      <div class="form-grid" style="margin-bottom:14px">
+        <div class="form-group"><label>ช่วงเวลา</label><input type="text" id="ae-tr-period"></div>
+        <div class="form-group"><label>สถานที่</label><input type="text" id="ae-tr-place"></div>
+        <div class="form-group"><label>หัวข้อ</label><input type="text" id="ae-tr-topic"></div>
+        <div class="form-group"><label>หน่วยงาน</label><input type="text" id="ae-tr-org"></div>
+      </div>
+
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">🔍 ศึกษาดูงาน</div>
+      <div class="form-grid" style="margin-bottom:14px">
+        <div class="form-group"><label>ช่วงเวลา</label><input type="text" id="ae-st-period"></div>
+        <div class="form-group"><label>สถานที่</label><input type="text" id="ae-st-place"></div>
+        <div class="form-group"><label>หัวข้อ</label><input type="text" id="ae-st-topic"></div>
+        <div class="form-group"><label>หน่วยงาน</label><input type="text" id="ae-st-org"></div>
+        <div class="form-group"><label>ผลการดำเนินงาน</label><input type="text" id="ae-st-result"></div>
+      </div>
+
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">🛒 ช่องทางการจำหน่ายสินค้า</div>
+      <div class="form-grid" style="margin-bottom:14px">
+        <div class="form-group"><label>ช่วงเวลา</label><input type="text" id="ae-sa-period"></div>
+        <div class="form-group"><label>สถานที่</label><input type="text" id="ae-sa-place"></div>
+        <div class="form-group"><label>ชื่องาน</label><input type="text" id="ae-sa-event"></div>
+        <div class="form-group"><label>หน่วยงาน</label><input type="text" id="ae-sa-org"></div>
+      </div>
+
+      <div class="panel-title" style="font-size:13px;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">💰 ช่องทางการจำหน่าย</div>
+      <div class="channel-row">
+        <div class="check-item" id="ae-item-ในจังหวัด" onclick="toggleActEditCheck('ในจังหวัด')"><div class="checkmark">✓</div><span>🏠 ภายในจังหวัด</span></div>
+        <div class="form-group" style="margin:0"><input type="number" id="ae-sa-local-val" placeholder="มูลค่า (บาท)" min="0"></div>
+      </div>
+      <div class="channel-row">
+        <div class="check-item" id="ae-item-ต่างจังหวัด" onclick="toggleActEditCheck('ต่างจังหวัด')"><div class="checkmark">✓</div><span>🚚 ต่างจังหวัด</span></div>
+        <div class="form-group" style="margin:0"><input type="number" id="ae-sa-other-val" placeholder="มูลค่า (บาท)" min="0"></div>
+      </div>
+      <div class="channel-row">
+        <div class="check-item" id="ae-item-ModernTrade" onclick="toggleActEditCheck('ModernTrade')"><div class="checkmark">✓</div><span>🏪 Modern Trade</span></div>
+        <div class="form-group" style="margin:0"><input type="number" id="ae-sa-modern-val" placeholder="มูลค่า (บาท)" min="0"></div>
+      </div>
+      <div class="channel-row">
+        <div class="check-item" id="ae-item-ต่างประเทศ" onclick="toggleActEditCheck('ต่างประเทศ')"><div class="checkmark">✓</div><span>🌏 ต่างประเทศ</span></div>
+        <div class="form-group" style="margin:0"><input type="number" id="ae-sa-export-val" placeholder="มูลค่า (บาท)" min="0"></div>
+      </div>
+      <div class="form-group" style="margin-top:10px;margin-bottom:14px">
+        <label>อื่นๆ</label>
+        <input type="text" id="ae-sa-other-name" placeholder="ระบุช่องทางอื่น...">
+      </div>
+
+      <div class="form-group" style="margin-bottom:14px">
+        <label>หมายเหตุ</label>
+        <textarea id="ae-note" style="min-height:60px"></textarea>
+      </div>
+      <div class="form-group">
+        <label>วันที่บันทึก</label>
+        <input type="text" id="ae-date" disabled style="background:#f5f5f5;color:#78909c">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="document.getElementById('actEditModal').style.display='none'">ยกเลิก</button>
+      <button class="btn-save-edit" id="btnSaveActEdit" onclick="saveActEdit()">💾 บันทึกการแก้ไข</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROMOTION EDIT MODAL -->
+<div class="modal-overlay" id="proEditModal" style="display:none" onclick="closeProModal(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">✏️ แก้ไขข้อมูลการส่งเสริม/พัฒนา</div>
+      <button class="modal-close" onclick="document.getElementById('proEditModal').style.display='none'">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="proEditRowNum">
+
+      <!-- ── ผู้ใส่ข้อมูล ── -->
+      <div class="form-grid three" style="margin-bottom:14px">
+        <div class="form-group"><label>ผู้ใส่ข้อมูล</label><input type="text" id="pe-rep"></div>
+        <div class="form-group"><label>ตำแหน่ง</label><input type="text" id="pe-pos"></div>
+        <div class="form-group"><label>หน่วยงาน</label><input type="text" id="pe-ag"></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>ชื่อสถานประกอบการ</label>
+        <input type="text" id="pe-biz">
+      </div>
+
+      <!-- ── หมวด 1 ── -->
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">📢 หมวด 1 การตลาดและการสร้างแบรนด์</div>
+      <div class="checkbox-group" style="margin-bottom:10px">
+        <div class="check-item" id="pe-item-หมวด1_การวางแผนกลยุทธ์การตลาด"        onclick="toggleProEditCheck('หมวด1_การวางแผนกลยุทธ์การตลาด')"><div class="checkmark">✓</div><span>การวางแผนกลยุทธ์การตลาด</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การสร้างแบรนด์"                   onclick="toggleProEditCheck('หมวด1_การสร้างแบรนด์')"><div class="checkmark">✓</div><span>การสร้างแบรนด์ (Branding)</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การออกแบบบรรจุภัณฑ์"             onclick="toggleProEditCheck('หมวด1_การออกแบบบรรจุภัณฑ์')"><div class="checkmark">✓</div><span>การออกแบบบรรจุภัณฑ์</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การเจาะตลาดออนไลน์"              onclick="toggleProEditCheck('หมวด1_การเจาะตลาดออนไลน์')"><div class="checkmark">✓</div><span>การเจาะตลาดออนไลน์</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การเข้าร่วมงานแสดงสินค้า"        onclick="toggleProEditCheck('หมวด1_การเข้าร่วมงานแสดงสินค้า')"><div class="checkmark">✓</div><span>การเข้าร่วมงานแสดงสินค้า</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การวิเคราะห์ตลาด"                onclick="toggleProEditCheck('หมวด1_การวิเคราะห์ตลาด')"><div class="checkmark">✓</div><span>การวิเคราะห์ตลาด</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การสร้างอัตลักษณ์สินค้า"         onclick="toggleProEditCheck('หมวด1_การสร้างอัตลักษณ์สินค้า')"><div class="checkmark">✓</div><span>การสร้างอัตลักษณ์สินค้า</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การส่งเสริมภูมิปัญญาท้องถิ่น"   onclick="toggleProEditCheck('หมวด1_การส่งเสริมภูมิปัญญาท้องถิ่น')"><div class="checkmark">✓</div><span>การส่งเสริมภูมิปัญญาท้องถิ่น</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การสร้างเครือข่ายธุรกิจ"         onclick="toggleProEditCheck('หมวด1_การสร้างเครือข่ายธุรกิจ')"><div class="checkmark">✓</div><span>การสร้างเครือข่ายธุรกิจ</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การตลาดออนไลน์เชิงAI"            onclick="toggleProEditCheck('หมวด1_การตลาดออนไลน์เชิงAI')"><div class="checkmark">✓</div><span>การตลาดออนไลน์เชิง AI</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การสร้างแบรนด์ยั่งยืนBCG"        onclick="toggleProEditCheck('หมวด1_การสร้างแบรนด์ยั่งยืนBCG')"><div class="checkmark">✓</div><span>การสร้างแบรนด์ยั่งยืน BCG</span></div>
+        <div class="check-item" id="pe-item-หมวด1_BigData_AI"                        onclick="toggleProEditCheck('หมวด1_BigData_AI')"><div class="checkmark">✓</div><span>Big Data และ AI</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การตลาดสีเขียว"                   onclick="toggleProEditCheck('หมวด1_การตลาดสีเขียว')"><div class="checkmark">✓</div><span>การตลาดสีเขียว</span></div>
+        <div class="check-item" id="pe-item-หมวด1_การตลาดQRCode"                    onclick="toggleProEditCheck('หมวด1_การตลาดQRCode')"><div class="checkmark">✓</div><span>การตลาด QR Code</span></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>อื่นๆ</label><input type="text" id="pe-หมวด1-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+
+      <!-- ── หมวด 2 ── -->
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">🏅 หมวด 2 การพัฒนาผลิตภัณฑ์และมาตรฐาน</div>
+      <div class="checkbox-group" style="margin-bottom:10px">
+        <div class="check-item" id="pe-item-หมวด2_การพัฒนาคุณภาพผลผลิต"            onclick="toggleProEditCheck('หมวด2_การพัฒนาคุณภาพผลผลิต')"><div class="checkmark">✓</div><span>การพัฒนาคุณภาพผลผลิต</span></div>
+        <div class="check-item" id="pe-item-หมวด2_การแปรรูปสินค้าเกษตร"             onclick="toggleProEditCheck('หมวด2_การแปรรูปสินค้าเกษตร')"><div class="checkmark">✓</div><span>การแปรรูปสินค้าเกษตร</span></div>
+        <div class="check-item" id="pe-item-หมวด2_GAP_Organic"                       onclick="toggleProEditCheck('หมวด2_GAP_Organic')"><div class="checkmark">✓</div><span>GAP/Organic</span></div>
+        <div class="check-item" id="pe-item-หมวด2_มอก_ISO"                           onclick="toggleProEditCheck('หมวด2_มอก_ISO')"><div class="checkmark">✓</div><span>มอก./ISO</span></div>
+        <div class="check-item" id="pe-item-หมวด2_อย_GMP_HACCP"                      onclick="toggleProEditCheck('หมวด2_อย_GMP_HACCP')"><div class="checkmark">✓</div><span>อย./GMP/HACCP</span></div>
+        <div class="check-item" id="pe-item-หมวด2_การพัฒนาสูตรผลิตภัณฑ์"           onclick="toggleProEditCheck('หมวด2_การพัฒนาสูตรผลิตภัณฑ์')"><div class="checkmark">✓</div><span>การพัฒนาสูตรผลิตภัณฑ์</span></div>
+        <div class="check-item" id="pe-item-หมวด2_LabTest"                            onclick="toggleProEditCheck('หมวด2_LabTest')"><div class="checkmark">✓</div><span>Lab Test</span></div>
+        <div class="check-item" id="pe-item-หมวด2_สุขอนามัยการผลิต"                 onclick="toggleProEditCheck('หมวด2_สุขอนามัยการผลิต')"><div class="checkmark">✓</div><span>สุขอนามัยการผลิต</span></div>
+        <div class="check-item" id="pe-item-หมวด2_ฉลากโภชนาการ"                     onclick="toggleProEditCheck('หมวด2_ฉลากโภชนาการ')"><div class="checkmark">✓</div><span>ฉลากโภชนาการ</span></div>
+        <div class="check-item" id="pe-item-หมวด2_ความเสี่ยงสุขภาพ"                 onclick="toggleProEditCheck('หมวด2_ความเสี่ยงสุขภาพ')"><div class="checkmark">✓</div><span>ความเสี่ยงสุขภาพ</span></div>
+        <div class="check-item" id="pe-item-หมวด2_OTOP"                               onclick="toggleProEditCheck('หมวด2_OTOP')"><div class="checkmark">✓</div><span>OTOP</span></div>
+        <div class="check-item" id="pe-item-หมวด2_ออกแบบผลิตภัณฑ์เชิงอุตสาหกรรม"  onclick="toggleProEditCheck('หมวด2_ออกแบบผลิตภัณฑ์เชิงอุตสาหกรรม')"><div class="checkmark">✓</div><span>ออกแบบผลิตภัณฑ์เชิงอุตสาหกรรม</span></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>อื่นๆ</label><input type="text" id="pe-หมวด2-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+
+      <!-- ── หมวด 3 ── -->
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">🏭 หมวด 3 การผลิตและอุตสาหกรรม</div>
+      <div class="checkbox-group" style="margin-bottom:10px">
+        <div class="check-item" id="pe-item-หมวด3_ต้นทุนการผลิต"                    onclick="toggleProEditCheck('หมวด3_ต้นทุนการผลิต')"><div class="checkmark">✓</div><span>ต้นทุนการผลิต</span></div>
+        <div class="check-item" id="pe-item-หมวด3_เทคโนโลยีเกษตรสมัยใหม่"          onclick="toggleProEditCheck('หมวด3_เทคโนโลยีเกษตรสมัยใหม่')"><div class="checkmark">✓</div><span>เทคโนโลยีเกษตรสมัยใหม่</span></div>
+        <div class="check-item" id="pe-item-หมวด3_Lean_Productivity"                 onclick="toggleProEditCheck('หมวด3_Lean_Productivity')"><div class="checkmark">✓</div><span>Lean / Productivity</span></div>
+        <div class="check-item" id="pe-item-หมวด3_มาตรฐานโรงงาน"                    onclick="toggleProEditCheck('หมวด3_มาตรฐานโรงงาน')"><div class="checkmark">✓</div><span>มาตรฐานโรงงาน</span></div>
+        <div class="check-item" id="pe-item-หมวด3_เครื่องจักรและเทคโนโลยี"          onclick="toggleProEditCheck('หมวด3_เครื่องจักรและเทคโนโลยี')"><div class="checkmark">✓</div><span>เครื่องจักรและเทคโนโลยี</span></div>
+        <div class="check-item" id="pe-item-หมวด3_สิ่งแวดล้อมโรงงาน"               onclick="toggleProEditCheck('หมวด3_สิ่งแวดล้อมโรงงาน')"><div class="checkmark">✓</div><span>สิ่งแวดล้อมโรงงาน</span></div>
+        <div class="check-item" id="pe-item-หมวด3_อุตสาหกรรมท้องถิ่น"              onclick="toggleProEditCheck('หมวด3_อุตสาหกรรมท้องถิ่น')"><div class="checkmark">✓</div><span>อุตสาหกรรมท้องถิ่น</span></div>
+        <div class="check-item" id="pe-item-หมวด3_อุตสาหกรรม4_0"                   onclick="toggleProEditCheck('หมวด3_อุตสาหกรรม4_0')"><div class="checkmark">✓</div><span>อุตสาหกรรม ๔.๐</span></div>
+        <div class="check-item" id="pe-item-หมวด3_เชื่อมโยงการผลิตขนาดใหญ่"        onclick="toggleProEditCheck('หมวด3_เชื่อมโยงการผลิตขนาดใหญ่')"><div class="checkmark">✓</div><span>เชื่อมโยงการผลิตขนาดใหญ่</span></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>อื่นๆ</label><input type="text" id="pe-หมวด3-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+
+      <!-- ── หมวด 4 ── -->
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">🤝 หมวด 4 การรวมกลุ่มและการพัฒนาชุมชน</div>
+      <div class="checkbox-group" style="margin-bottom:10px">
+        <div class="check-item" id="pe-item-หมวด4_รวมกลุ่มเกษตรกร"                 onclick="toggleProEditCheck('หมวด4_รวมกลุ่มเกษตรกร')"><div class="checkmark">✓</div><span>รวมกลุ่มเกษตรกร</span></div>
+        <div class="check-item" id="pe-item-หมวด4_รวมกลุ่มพัฒนาศักยภาพ"            onclick="toggleProEditCheck('หมวด4_รวมกลุ่มพัฒนาศักยภาพ')"><div class="checkmark">✓</div><span>รวมกลุ่มพัฒนาศักยภาพ</span></div>
+        <div class="check-item" id="pe-item-หมวด4_แหล่งเรียนรู้ชุมชน"              onclick="toggleProEditCheck('หมวด4_แหล่งเรียนรู้ชุมชน')"><div class="checkmark">✓</div><span>แหล่งเรียนรู้ชุมชน</span></div>
+        <div class="check-item" id="pe-item-หมวด4_พัฒนาทักษะแรงงาน"               onclick="toggleProEditCheck('หมวด4_พัฒนาทักษะแรงงาน')"><div class="checkmark">✓</div><span>พัฒนาทักษะแรงงาน</span></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>อื่นๆ</label><input type="text" id="pe-หมวด4-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+
+      <!-- ── หมวด 5 ── -->
+      <div class="panel-title" style="font-size:13px;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">💰 หมวด 5 การบริหารจัดการและการเงิน</div>
+      <div class="checkbox-group" style="margin-bottom:10px">
+        <div class="check-item" id="pe-item-หมวด5_จดทะเบียนเครื่องหมายการค้า"      onclick="toggleProEditCheck('หมวด5_จดทะเบียนเครื่องหมายการค้า')"><div class="checkmark">✓</div><span>จดทะเบียนเครื่องหมายการค้า</span></div>
+        <div class="check-item" id="pe-item-หมวด5_บัญชีครัวเรือน"                   onclick="toggleProEditCheck('หมวด5_บัญชีครัวเรือน')"><div class="checkmark">✓</div><span>บัญชีครัวเรือน</span></div>
+        <div class="check-item" id="pe-item-หมวด5_แหล่งทุน_สินเชื่อ"               onclick="toggleProEditCheck('หมวด5_แหล่งทุน_สินเชื่อ')"><div class="checkmark">✓</div><span>แหล่งทุน/สินเชื่อ</span></div>
+        <div class="check-item" id="pe-item-หมวด5_ภาษี_บัญชี_กฎหมาย"              onclick="toggleProEditCheck('หมวด5_ภาษี_บัญชี_กฎหมาย')"><div class="checkmark">✓</div><span>ภาษี/บัญชี/กฎหมาย</span></div>
+        <div class="check-item" id="pe-item-หมวด5_คำปรึกษาการบริหาร"               onclick="toggleProEditCheck('หมวด5_คำปรึกษาการบริหาร')"><div class="checkmark">✓</div><span>คำปรึกษาการบริหาร</span></div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>อื่นๆ</label><input type="text" id="pe-หมวด5-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+
+      <!-- ── หมายเหตุ + วันที่ ── -->
+      <div class="form-group" style="margin-bottom:14px">
+        <label>หมายเหตุ</label>
+        <textarea id="pe-note" style="min-height:60px"></textarea>
+      </div>
+      <div class="form-group">
+        <label>วันที่บันทึก</label>
+        <input type="text" id="pe-date" disabled style="background:#f5f5f5;color:#78909c">
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="document.getElementById('proEditModal').style.display='none'">ยกเลิก</button>
+      <button class="btn-save-edit" id="btnSaveProEdit" onclick="saveProEdit()">💾 บันทึกการแก้ไข</button>
+    </div>
+  </div>
+</div>
 
 <div class="toast" id="toast"></div>
 
-<script src="index_file/script/loader.js"></script>
+<script src="index_file/script/state.js"></script>
+<script src="index_file/script/state_activity.js"></script>
+<script src="index_file/script/state_promotion.js"></script>
+<script src="index_file/script/nav.js"></script>
+<script src="index_file/script/form.js"></script>
+<script src="index_file/script/form_activity.js"></script>
+<script src="index_file/script/form_promotion.js"></script>
+<script src="index_file/script/table.js"></script>
+<script src="index_file/script/table_activity.js"></script>
+<script src="index_file/script/table_promotion.js"></script>
+<script src="index_file/script/modal.js"></script>
+<script src="index_file/script/modal_activity.js"></script>
+<script src="index_file/script/modal_promotion.js"></script>
+<script src="index_file/script/dashboard.js"></script>
+<script src="index_file/script/overview.js"></script>
 </body>
 </html>
