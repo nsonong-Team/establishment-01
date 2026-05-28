@@ -57,6 +57,7 @@ function applyActFilter() {
     <td>${r[C.rep] || '-'}</td>
     <td>${r[C.pos] || '-'}</td>
     <td>${r[C.ag]  || '-'}</td>
+    <td><strong>${r[C.biz] || '-'}</strong></td>
     <td>${r[C.tr_period] || '-'}</td>
     <td>${r[C.tr_place]  || '-'}</td>
     <td>${r[C.tr_topic]  || '-'}</td>

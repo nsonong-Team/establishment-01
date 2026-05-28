@@ -13,8 +13,10 @@ function toggleActCheck(id) {
 
 // ── Submit ─────────────────────────────────────────
 async function handleSubmitAct() {
+  const biz = getVal('act-biz');
   const btn = document.getElementById('btnSubmitAct');
   const txt = document.getElementById('btnTextAct');
+  if (!biz) { showToast('⚠️ กรุณากรอกชื่อสถานประกอบการ', true); return; }
   btn.disabled = true;
   txt.innerHTML = '<span class="loading"></span> กำลังบันทึก...';
 
@@ -25,6 +27,7 @@ async function handleSubmitAct() {
     ชื่อผู้ใส่ข้อมูล: getVal('act-rep'),
     ตำแหน่ง:         getVal('act-pos'),
     หน่วยงาน:        getVal('act-ag'),
+    ชื่อสถานประกอบการ: biz,
 
     // ── อบรม / สัมมนา ─────────────────────────
     อบรม_ช่วงเวลา:  getVal('act-tr-period'),
@@ -80,7 +83,7 @@ async function handleSubmitAct() {
 // ── Reset ──────────────────────────────────────────
 function resetActForm() {
   const fields = [
-    'act-rep', 'act-pos', 'act-ag',
+    'act-rep', 'act-pos', 'act-ag', 'act-biz',
     'act-tr-period', 'act-tr-place', 'act-tr-topic', 'act-tr-org',
     'act-st-period', 'act-st-place', 'act-st-topic', 'act-st-org', 'act-st-result',
     'act-sa-period', 'act-sa-place', 'act-sa-event', 'act-sa-org',

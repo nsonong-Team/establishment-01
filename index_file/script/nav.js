@@ -30,5 +30,6 @@ function showSubTab(prefix, tab) {
     });
 
   if (prefix === 'est' && tab === 'view') loadTableData();
-  if (prefix === 'act' && tab === 'view') loadActTableData(); // ← เพิ่ม
+  if (prefix === 'act' && tab === 'view') loadActTableData();
+  if (prefix === 'pro' && tab === 'view') loadProTableData();
 }
