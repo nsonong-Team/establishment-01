@@ -13,7 +13,11 @@ function showTab(tab) {
   });
   if (tab === 'dash') loadDashboard();
   //if (tab === 'activity')  loadActivityData();
-  // if (tab === 'overview')  loadOverviewData();
+  if (tab === 'overview') {
+    loadOvData1();
+    loadOvData2();
+    loadOvData3();
+  }
 }
 
 function showSubTab(prefix, tab) {
