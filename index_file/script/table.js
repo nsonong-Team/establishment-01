@@ -37,36 +37,37 @@ async function quickUpdateTier(rowNo, selectEl) {
   const updateData = {
     action: 'update',
     rowNum: rowNo,
-    ชื่อสถานประกอบการ: row[C.name]  || '',
-    ที่ตั้ง:            row[C.loc]   || '',
-    ประเภทสินค้า:      row[C.type]  || '',
-    ชื่อแบรนด์:        row[C.brand] || '',
-    มาตรฐาน:          row[C.std]   || '',
-    ระยะเวลา:         row[C.age]   || '',
-    tier:             tier,
-    ส่งออก:           row[C.exp]  === 'ใช่',
-    ในประเทศ:         row[C.dom]  === 'ใช่',
-    ออนไลน์:          row[C.onl]  === 'ใช่',
-    ขายในพื้นที่:      row[C.loc2] === 'ใช่',
-    อื่นๆ:            row[C.etc]  || '',
-    หมายเหตุ:         row[C.note] || '',
-    อบรม_เวลา:        row[C.tr_period] || '',
-    อบรม_สถานที่:     row[C.tr_place]  || '',
-    อบรม_หัวข้อ:      row[C.tr_topic]  || '',
-    อบรม_หน่วยงาน:   row[C.tr_org]    || '',
-    ดูงาน_เวลา:       row[C.st_period] || '',
-    ดูงาน_สถานที่:    row[C.st_place]  || '',
-    ดูงาน_หัวข้อ:     row[C.st_topic]  || '',
-    ดูงาน_ผล:         row[C.st_result] || '',
-    ดูงาน_หน่วยงาน:  row[C.st_org]    || '',
-    จำหน่าย_เวลา:        row[C.sa_period] || '',
-    จำหน่าย_สถานที่:     row[C.sa_place]  || '',
-    จำหน่าย_ชื่องาน:     row[C.sa_event]  || '',
-    จำหน่าย_หน่วยงาน:   row[C.sa_org]    || '',
-    จำหน่าย_ในจังหวัด:   row[C.sa_local]  || '',
-    จำหน่าย_ต่างจังหวัด: row[C.sa_other]  || '',
-    จำหน่าย_trade:       row[C.sa_modern] || '',
-    จำหน่าย_ต่างประเทศ:  row[C.sa_export] || '',
+    ชื่อผู้ใส่ข้อมูล: row[C.rep]      || '',
+    ตำแหน่ง:         row[C.pos]      || '',
+    หน่วยงาน:        row[C.ag]       || '',
+    ชื่อสถานประกอบการ: row[C.name]   || '',
+    ที่ตั้ง:           row[C.loc]    || '',
+    โทรศัพท์:         row[C.phone]  || '',
+    จำนวนสมาชิก:      row[C.member]   || '',
+    กำลังการผลิต:     row[C.capacity] || '',
+    รายได้เฉลี่ย:     row[C.income]   || '',
+    ชื่อแบรนด์:       row[C.brand]  || '',
+    ประเภท_OTOP:           row[C.type_otop]    === 'ใช่',
+    ประเภท_SMEs:           row[C.type_smes]    === 'ใช่',
+    ประเภท_วิสาหกิจชุมชน: row[C.type_vill]    === 'ใช่',
+    ประเภท_StartUp:        row[C.type_startup] === 'ใช่',
+    ประเภท_บริษัทฯ:        row[C.type_corp]    === 'ใช่',
+    ประเภท_อื่นๆ:          row[C.type_etc]     || '',
+    สินค้า_อาหาร:          row[C.prod_food]  === 'ใช่',
+    สินค้า_ผ้า:             row[C.prod_cloth] === 'ใช่',
+    สินค้า_ของใช้:          row[C.prod_goods] === 'ใช่',
+    สินค้า_สมุนไพร:         row[C.prod_herb]  === 'ใช่',
+    สินค้า_เกษตร:           row[C.prod_agri]  === 'ใช่',
+    สินค้า_อื่นๆ:           row[C.prod_etc]   || '',
+    มาตรฐาน_OTOP3_5:       row[C.std_otop] === 'ใช่',
+    มาตรฐาน_มผช:           row[C.std_mph]  === 'ใช่',
+    มาตรฐาน_อย:            row[C.std_fda]  === 'ใช่',
+    มาตรฐาน_GAP:           row[C.std_gap]  === 'ใช่',
+    มาตรฐาน_GMP:           row[C.std_gmp]  === 'ใช่',
+    มาตรฐาน_NBLBrand:      row[C.std_nbl]  === 'ใช่',
+    มาตรฐาน_อื่นๆ:         row[C.std_etc]  || '',
+    tier:     tier,
+    หมายเหตุ: row[C.note] || '',
   };
 
   try {
@@ -88,7 +89,7 @@ async function quickUpdateTier(rowNo, selectEl) {
 // ── Load all rows from Google Sheets ──────────────
 async function loadTableData() {
   const tbody = document.getElementById('tableBody');
-  tbody.innerHTML = '<tr><td colspan="31" style="text-align:center;padding:40px;color:#90a4ae">⏳ กำลังโหลด...</td></tr>';
+  tbody.innerHTML = '<tr><td colspan="16" style="text-align:center;padding:40px;color:#90a4ae">⏳ กำลังโหลด...</td></tr>';
 
   try {
     const res  = await fetch(GAS_URL + '?action=getSheetData');
@@ -96,7 +97,7 @@ async function loadTableData() {
 
     if (!data.rows || data.rows.length === 0) {
       allRows = [];
-      tbody.innerHTML = '<tr><td colspan="31"><div class="empty-state"><div class="big-icon">📋</div><div>ยังไม่มีข้อมูล</div></div></td></tr>';
+      tbody.innerHTML = '<tr><td colspan="16"><div class="empty-state"><div class="big-icon">📋</div><div>ยังไม่มีข้อมูล</div></div></td></tr>';
       return;
     }
     colMap  = getColMap(buildIdx(data.headers));
@@ -109,25 +110,20 @@ async function loadTableData() {
 
     applyFilter();
   } catch (e) {
-    tbody.innerHTML = '<tr><td colspan="31" style="text-align:center;color:#c62828;padding:30px">❌ ไม่สามารถโหลดข้อมูลได้</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="16" style="text-align:center;color:#c62828;padding:30px">❌ ไม่สามารถโหลดข้อมูลได้</td></tr>';
   }
 }
 
 // ── Apply filters and re-render table ─────────────
 function applyFilter() {
-  const C       = colMap;
-  const search  = (document.getElementById('fSearch').value  || '').toLowerCase();
-  const tier    =  document.getElementById('fTier').value    || '';
-  const type    =  document.getElementById('fType').value    || '';
-  const channel =  document.getElementById('fChannel').value || '';
-  const chanMap = { export: C.exp, dom: C.dom, online: C.onl, local: C.loc2 };
+  const C      = colMap;
+  const search = (document.getElementById('fSearch').value || '').toLowerCase();
+  const tier   =  document.getElementById('fTier').value   || '';
 
   const filtered = allRows.filter(r => {
     if (search && !(r[C.name] || '').toLowerCase().includes(search)) return false;
     if (tier === 'ยังไม่ระบุ') { if (r[C.tier]) return false; }
     else if (tier && r[C.tier] !== tier) return false;
-    if (type    && r[C.type]            !== type)   return false;
-    if (channel && r[chanMap[channel]]  !== 'ใช่')  return false;
     return true;
   });
 
@@ -140,54 +136,55 @@ function applyFilter() {
   const tbody  = document.getElementById('tableBody');
 
   if (filtered.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="31"><div class="empty-state"><div class="big-icon">🔍</div><div>ไม่พบข้อมูลที่ตรงกัน</div></div></td></tr>'
+    tbody.innerHTML = '<tr><td colspan="16"><div class="empty-state"><div class="big-icon">🔍</div><div>ไม่พบข้อมูลที่ตรงกัน</div></div></td></tr>';
     return;
   }
 
-  tbody.innerHTML = filtered.map((r, i) => {
-    const ch = [
-      r[C.exp]  === 'ใช่' ? '🌏ส่งออก'   : '',
-      r[C.dom]  === 'ใช่' ? '🇹🇭ในประเทศ' : '',
-      r[C.onl]  === 'ใช่' ? '💻ออนไลน์'   : '',
-      r[C.loc2] === 'ใช่' ? '🏪พื้นที่'    : '',
-      r[C.etc] || '',
-    ].filter(Boolean).join(', ');
+  // helper แปลง ใช่/ไม่ → ✅/—
+  const yes = v => v === 'ใช่' ? '✅' : '—';
 
-    return `<tr>
-      <td><strong>${r[C.no]   || ''}</strong></td>
-      <td><button class="btn-edit" onclick="openEdit(this,${i})">✏️ แก้ไข</button></td>
-      <td>${r[C.rep]  || '-'}</td>
-      <td>${r[C.pos]  || '-'}</td>
-      <td>${r[C.ag]   || '-'}</td>
-      <td><strong>${r[C.name] || '-'}</strong></td>
-      <td>${r[C.loc]   || '-'}</td>
-      <td>${r[C.type]  || '-'}</td>
-      <td>${r[C.brand] ? `<span class="badge">${r[C.brand]}</span>` : '-'}</td>
-      <td>${r[C.std]   || '-'}</td>
-      <td style="text-align:center">${r[C.age]  || '-'}</td>
-      <td style="text-align:center">${tierDropdown(r[C.no], r[C.tier])}</td>
-      <td style="font-size:11.5px">${ch || '-'}</td>
-      <td>${r[C.tr_period] || '-'}</td>
-      <td>${r[C.tr_place]  || '-'}</td>
-      <td>${r[C.tr_topic]  || '-'}</td>
-      <td>${r[C.tr_org]    || '-'}</td>
-      <td>${r[C.st_period] || '-'}</td>
-      <td>${r[C.st_place]  || '-'}</td>
-      <td>${r[C.st_topic]  || '-'}</td>
-      <td>${r[C.st_result] || '-'}</td>
-      <td>${r[C.st_org]    || '-'}</td>
-      <td>${r[C.sa_period] || '-'}</td>
-      <td>${r[C.sa_place]  || '-'}</td>
-      <td>${r[C.sa_event]  || '-'}</td>
-      <td>${r[C.sa_org]    || '-'}</td>
-      <td style="text-align:right">${r[C.sa_local]  || '-'}</td>
-      <td style="text-align:right">${r[C.sa_other]  || '-'}</td>
-      <td style="text-align:right">${r[C.sa_modern] || '-'}</td>
-      <td style="text-align:right">${r[C.sa_export] || '-'}</td>
-      <td>${r[C.note] || '-'}</td>
-      <td>${r[C.date] || '-'}</td>
-    </tr>`;
-  }).join('');
+  tbody.innerHTML = filtered.map((r, i) => `<tr>
+    <td><strong>${r[C.no]  || ''}</strong></td>
+    <td><button class="btn-edit" onclick="openEdit(this,${i})">✏️ แก้ไข</button></td>
+    <td>${r[C.rep]  || '-'}</td>
+    <td>${r[C.pos]  || '-'}</td>
+    <td>${r[C.ag]   || '-'}</td>
+    <td><strong>${r[C.name] || '-'}</strong></td>
+    <td>${r[C.loc]   || '-'}</td>
+    <td>${r[C.phone] || '-'}</td>
+    <td>${r[C.member]   || '-'}</td>
+    <td>${r[C.capacity] || '-'}</td>
+    <td>${r[C.income]   || '-'}</td>
+    <td>${r[C.brand] || '-'}</td>
+    <td style="font-size:11px">${[
+      r[C.type_otop]    === 'ใช่' ? 'OTOP'     : '',
+      r[C.type_smes]    === 'ใช่' ? 'SMEs'     : '',
+      r[C.type_vill]    === 'ใช่' ? 'วิสาหกิจ' : '',
+      r[C.type_startup] === 'ใช่' ? 'StartUp'  : '',
+      r[C.type_corp]    === 'ใช่' ? 'บริษัทฯ'  : '',
+      r[C.type_etc]     || '',
+    ].filter(Boolean).join(', ') || '-'}</td>
+    <td style="font-size:11px">${[
+      r[C.prod_food]  === 'ใช่' ? '🍽️อาหาร'    : '',
+      r[C.prod_cloth] === 'ใช่' ? '👗ผ้า'       : '',
+      r[C.prod_goods] === 'ใช่' ? '🏠ของใช้'    : '',
+      r[C.prod_herb]  === 'ใช่' ? '🌿สมุนไพร'   : '',
+      r[C.prod_agri]  === 'ใช่' ? '🌾เกษตร'     : '',
+      r[C.prod_etc]   || '',
+    ].filter(Boolean).join(', ') || '-'}</td>
+    <td style="font-size:11px">${[
+      r[C.std_otop] === 'ใช่' ? 'OTOP3-5' : '',
+      r[C.std_mph]  === 'ใช่' ? 'มผช'     : '',
+      r[C.std_fda]  === 'ใช่' ? 'อย'      : '',
+      r[C.std_gap]  === 'ใช่' ? 'GAP'     : '',
+      r[C.std_gmp]  === 'ใช่' ? 'GMP'     : '',
+      r[C.std_nbl]  === 'ใช่' ? 'NBL'     : '',
+      r[C.std_etc]  || '',
+    ].filter(Boolean).join(', ') || '-'}</td>
+    <td style="text-align:center">${tierDropdown(r[C.no], r[C.tier])}</td>
+    <td>${r[C.note] || '-'}</td>
+    <td>${r[C.date] || '-'}</td>
+  </tr>`).join('');
 }
 
 // ── Clear all filters ──────────────────────────────

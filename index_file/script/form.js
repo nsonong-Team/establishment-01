@@ -33,39 +33,51 @@ async function handleSubmit() {
 
   const formData = {
     action:            'submit',
-    ชื่อสถานประกอบการ: name,
-    ที่ตั้ง:            getVal('ที่ตั้ง'),
-    ประเภทสินค้า:      getVal('ประเภทสินค้า'),
-    ชื่อแบรนด์:        getVal('ชื่อแบรนด์'),
-    มาตรฐาน:          getVal('มาตรฐาน'),
-    ระยะเวลา:         getVal('ระยะเวลา'),
-    ส่งออก:           checkStates['ส่งออก']      || false,
-    ในประเทศ:         checkStates['ในประเทศ']    || false,
-    ออนไลน์:          checkStates['ออนไลน์']     || false,
-    ขายในพื้นที่:      checkStates['ขายในพื้นที่'] || false,
-    อื่นๆ:            getVal('อื่นๆ'),
-    อบรม_เวลา:        getByName('training_period_0'),
-    อบรม_สถานที่:     getByName('training_place_0'),
-    อบรม_หัวข้อ:      getByName('training_topic_0'),
-    อบรม_หน่วยงาน:   getByName('training_org_0'),
-    ดูงาน_เวลา:       getByName('study_period_0'),
-    ดูงาน_สถานที่:    getByName('study_place_0'),
-    ดูงาน_หัวข้อ:     getByName('study_topic_0'),
-    ดูงาน_ผล:         getByName('study_result_0'),
-    ดูงาน_หน่วยงาน:  getByName('study_org_0'),
-    จำหน่าย_เวลา:        getByName('sales_period_0'),
-    จำหน่าย_สถานที่:     getByName('sales_place_0'),
-    จำหน่าย_ชื่องาน:     getByName('sales_event_0'),
-    จำหน่าย_หน่วยงาน:   getByName('sales_org_0'),
-    จำหน่าย_ในจังหวัด:   getByName('sales_local_0'),
-    จำหน่าย_ต่างจังหวัด: getByName('sales_other_0'),
-    จำหน่าย_trade:       getByName('sales_modern_0'),
-    จำหน่าย_ต่างประเทศ:  getByName('sales_export_0'),
-    tier:             selectedTier ? 'TIER ' + selectedTier : '',
-    หมายเหตุ:         getVal('หมายเหตุ'),
+
+    // ── ผู้ใส่ข้อมูล ──────────────────────────
     ชื่อผู้ใส่ข้อมูล: getVal('ชื่อใส่ข้อมูล'),
     ตำแหน่ง:         getVal('ตำแหน่ง'),
     หน่วยงาน:        getVal('หน่วยงานผู้ใส่ข้อมูล'),
+
+    // ── ข้อมูลสถานประกอบการ ───────────────────
+    ชื่อสถานประกอบการ: name,
+    ที่ตั้ง:            getVal('ที่ตั้ง'),
+    โทรศัพท์:          getVal('โทรศัพท์'),
+
+    // ── รายละเอียดกิจการ ──────────────────────
+    จำนวนสมาชิก:   getVal('จำนวนสมาชิก'),
+    กำลังการผลิต:  getVal('กำลังการผลิต'),
+    รายได้เฉลี่ย:  getVal('รายได้เฉลี่ย'),
+    ชื่อแบรนด์:     getVal('ชื่อแบรนด์'),
+
+    // ── ประเภทผู้ประกอบการ ────────────────────
+    ประเภท_OTOP:           checkStates['OTOP']           || false,
+    ประเภท_SMEs:           checkStates['SMEs']           || false,
+    ประเภท_วิสาหกิจชุมชน: checkStates['วิสาหกิจชุมชน'] || false,
+    ประเภท_StartUp:        checkStates['StartUp']        || false,
+    ประเภท_บริษัทฯ:        checkStates['บริษัทฯ']        || false,
+    ประเภท_อื่นๆ:          getVal('ประเภทผู้ประกอบการ_อื่นๆ'),
+
+    // ── ข้อมูลสินค้า ──────────────────────────
+    สินค้า_อาหาร:          checkStates['สินค้าอาหาร']   || false,
+    สินค้า_ผ้า:             checkStates['สินค้าผ้า']     || false,
+    สินค้า_ของใช้:          checkStates['สินค้าของใช้']  || false,
+    สินค้า_สมุนไพร:         checkStates['สินค้าสมุนไพร'] || false,
+    สินค้า_เกษตร:           checkStates['สินค้าเกษตร']  || false,
+    สินค้า_อื่นๆ:           getVal('ประเภทสินค้า_อื่นๆ'),
+
+    // ── มาตรฐาน ───────────────────────────────
+    มาตรฐาน_OTOP3_5:       checkStates['OTOP3-5']  || false,
+    มาตรฐาน_มผช:           checkStates['มผช']      || false,
+    มาตรฐาน_อย:            checkStates['อย']       || false,
+    มาตรฐาน_GAP:           checkStates['GAP']      || false,
+    มาตรฐาน_GMP:           checkStates['GMP']      || false,
+    มาตรฐาน_NBLBrand:      checkStates['NBLBrand'] || false,
+    มาตรฐาน_อื่นๆ:         getVal('มาตรฐาน_อื่นๆ'),
+
+    // ── TIER และหมายเหตุ ───────────────────────
+    tier:     selectedTier ? 'TIER ' + selectedTier : '',
+    หมายเหตุ: getVal('หมายเหตุ'),
   };
 
   try {
@@ -89,28 +101,24 @@ async function handleSubmit() {
 // ── Reset form to blank state ──────────────────────
 function resetForm() {
   const fields = [
-    'ชื่อสถานประกอบการ', 'ที่ตั้ง', 'ประเภทสินค้า', 'ชื่อแบรนด์',
-    'มาตรฐาน', 'ระยะเวลา', 'อื่นๆ', 'หมายเหตุ',
     'ชื่อใส่ข้อมูล', 'ตำแหน่ง', 'หน่วยงานผู้ใส่ข้อมูล',
+    'ชื่อสถานประกอบการ', 'ที่ตั้ง', 'โทรศัพท์',
+    'ประเภทผู้ประกอบการ_อื่นๆ',
+    'จำนวนสมาชิก', 'กำลังการผลิต', 'รายได้เฉลี่ย',
+    'ชื่อแบรนด์', 'ประเภทสินค้า_อื่นๆ', 'มาตรฐาน_อื่นๆ',
+    'หมายเหตุ',
   ];
   fields.forEach(id => {
     const el = document.getElementById(id);
     if (el) el.value = '';
   });
 
-  // ── ล้าง name-based fields ────────────────────
-  const nameFields = [
-    'training_period_0', 'training_place_0', 'training_topic_0', 'training_org_0',
-    'study_period_0',    'study_place_0',    'study_topic_0',    'study_result_0', 'study_org_0',
-    'sales_period_0',    'sales_place_0',    'sales_event_0',    'sales_org_0',
-    'sales_local_0',     'sales_other_0',    'sales_modern_0',   'sales_export_0',
+  const checkIds = [
+    'OTOP', 'SMEs', 'วิสาหกิจชุมชน', 'StartUp', 'บริษัทฯ',
+    'สินค้าอาหาร', 'สินค้าผ้า', 'สินค้าของใช้', 'สินค้าสมุนไพร', 'สินค้าเกษตร',
+    'OTOP3-5', 'มผช', 'อย', 'GAP', 'GMP', 'NBLBrand',
   ];
-  nameFields.forEach(name => {
-    const el = document.querySelector(`[name="${name}"]`);
-    if (el) el.value = '';
-  });
-
-  ['ส่งออก', 'ในประเทศ', 'ออนไลน์', 'ขายในพื้นที่'].forEach(id => {
+  checkIds.forEach(id => {
     checkStates[id] = false;
     const el = document.getElementById('item-' + id);
     if (el) el.classList.remove('checked');

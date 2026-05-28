@@ -158,4 +158,16 @@ textarea {
   cursor: pointer;
   transition: 0.2s;
 }
-.btn-remove-row:hover { background: #ef9a9a; color: #fff; }
+.btn-remove-row:hover {
+  background: #ef9a9a;
+  color: #fff;
+}
+
+/* ── Channel Row (checkbox + input คู่กัน) ── */
+.channel-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}

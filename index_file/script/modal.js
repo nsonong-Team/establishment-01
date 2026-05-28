@@ -15,45 +15,49 @@ function openEdit(btn, filteredIdx) {
 
   // ── basic fields ──
   // ── ผู้ใส่ข้อมูล ────────────────────────────
-  document.getElementById('editRowNum').value = r[C.no]    || '';
+  document.getElementById('editRowNum').value = r[C.no]   || '';
+  document.getElementById('e-rep').value      = r[C.rep]  || '';
+  document.getElementById('e-pos').value      = r[C.pos]  || '';
+  document.getElementById('e-ag').value       = r[C.ag]   || '';
+  document.getElementById('e-date').value     = r[C.date] || '';
+  document.getElementById('e-name').value     = r[C.name] || '';
+  document.getElementById('e-loc').value      = r[C.loc]  || '';
+  document.getElementById('e-phone').value    = r[C.phone]|| '';
+  document.getElementById('e-member').value   = r[C.member]|| '';
+  document.getElementById('e-capacity').value = r[C.capacity]|| '';
+  document.getElementById('e-income').value   = r[C.income]|| '';
+  document.getElementById('e-brand').value    = r[C.brand]|| '';
+  document.getElementById('e-note').value     = r[C.note] || '';
 
-  document.getElementById('e-rep').value      = r[C.rep]   || '';
-  document.getElementById('e-pos').value      = r[C.pos]   || '';
-  document.getElementById('e-ag').value       = r[C.ag]    || '';
-  document.getElementById('e-date').value     = r[C.date]  || '';
+  // ── checkbox ประเภทผู้ประกอบการ ──
+  const bizTypes = {
+    'OTOP': C.type_otop, 'SMEs': C.type_smes,
+    'วิสาหกิจชุมชน': C.type_vill, 'StartUp': C.type_startup, 'บริษัทฯ': C.type_corp
+  };
+  document.getElementById('e-ประเภท_อื่นๆ').value = r[C.type_etc] || '';
 
-  document.getElementById('e-name').value     = r[C.name]  || '';
-  document.getElementById('e-loc').value      = r[C.loc]   || '';
-  document.getElementById('e-type').value     = r[C.type]  || '';
-  document.getElementById('e-brand').value    = r[C.brand] || '';
-  document.getElementById('e-std').value      = r[C.std]   || '';
-  document.getElementById('e-age').value      = r[C.age]   || '';
-  document.getElementById('e-note').value     = r[C.note]  || '';
-  document.getElementById('e-etc').value      = r[C.etc]   || '';
+  // ── checkbox ประเภทสินค้า ──
+  const prodTypes = {
+    'สินค้าอาหาร': C.prod_food, 'สินค้าผ้า': C.prod_cloth,
+    'สินค้าของใช้': C.prod_goods, 'สินค้าสมุนไพร': C.prod_herb, 'สินค้าเกษตร': C.prod_agri
+  };
+  document.getElementById('e-สินค้า_อื่นๆ').value = r[C.prod_etc] || '';
 
-  
-  // อบรม / สัมมนา
-  document.getElementById('e-tr-period').value = r[C.tr_period] || '';
-  document.getElementById('e-tr-place').value  = r[C.tr_place]  || '';
-  document.getElementById('e-tr-topic').value  = r[C.tr_topic]  || '';
-  document.getElementById('e-tr-org').value    = r[C.tr_org]    || '';
+  // ── checkbox มาตรฐาน ──
+  const stds = {
+    'OTOP3-5': C.std_otop, 'มผช': C.std_mph, 'อย': C.std_fda,
+    'GAP': C.std_gap, 'GMP': C.std_gmp, 'NBLBrand': C.std_nbl
+  };
+  document.getElementById('e-มาตรฐาน_อื่นๆ').value = r[C.std_etc] || '';
 
-  // ศึกษาดูงาน
-  document.getElementById('e-st-period').value = r[C.st_period] || '';
-  document.getElementById('e-st-place').value  = r[C.st_place]  || '';
-  document.getElementById('e-st-topic').value  = r[C.st_topic]  || '';
-  document.getElementById('e-st-result').value = r[C.st_result] || '';
-  document.getElementById('e-st-org').value    = r[C.st_org]    || '';
-
-  // จำหน่ายสินค้า
-  document.getElementById('e-sa-period').value = r[C.sa_period] || '';
-  document.getElementById('e-sa-place').value  = r[C.sa_place]  || '';
-  document.getElementById('e-sa-event').value  = r[C.sa_event]  || '';
-  document.getElementById('e-sa-org').value    = r[C.sa_org]    || '';
-  document.getElementById('e-sa-local').value  = r[C.sa_local]  || '';
-  document.getElementById('e-sa-other').value  = r[C.sa_other]  || '';
-  document.getElementById('e-sa-modern').value = r[C.sa_modern] || '';
-  document.getElementById('e-sa-export').value = r[C.sa_export] || '';
+  // set checkboxes
+  editCheckStates = {};
+  [...Object.entries(bizTypes), ...Object.entries(prodTypes), ...Object.entries(stds)]
+    .forEach(([key, col]) => {
+      editCheckStates[key] = r[col] === 'ใช่';
+      const el = document.getElementById('e-item-' + key);
+      if (el) el.classList.toggle('checked', editCheckStates[key]);
+    });
 
   // tier
   editTier = null;
@@ -63,20 +67,6 @@ function openEdit(btn, filteredIdx) {
   if      (r[C.tier] === 'TIER 1') { editTier = 1; document.getElementById('et1').classList.add('sel-t1'); }
   else if (r[C.tier] === 'TIER 2') { editTier = 2; document.getElementById('et2').classList.add('sel-t2'); }
   else if (r[C.tier] === 'TIER 3') { editTier = 3; document.getElementById('et3').classList.add('sel-t3'); }
-
-  // channels
-  const chMap = {
-    'ส่งออก':      C.exp,
-    'ในประเทศ':    C.dom,
-    'ออนไลน์':     C.onl,
-    'ขายในพื้นที่': C.loc2,
-  };
-  editCheckStates = {};
-  Object.entries(chMap).forEach(([key, col]) => {
-    editCheckStates[key] = r[col] === 'ใช่';
-    document.getElementById('e-item-' + key)
-      .classList.toggle('checked', editCheckStates[key]);
-  });
 
   document.getElementById('editModal').style.display = 'flex';
 }
@@ -114,47 +104,37 @@ async function saveEdit() {
   const updateData = {
     action: 'update',
     rowNum,
-    // ── ผู้ใส่ข้อมูล ────────────────────────────
     ชื่อผู้ใส่ข้อมูล: document.getElementById('e-rep').value.trim(),
     ตำแหน่ง:         document.getElementById('e-pos').value.trim(),
     หน่วยงาน:        document.getElementById('e-ag').value.trim(),
-
     ชื่อสถานประกอบการ: document.getElementById('e-name').value.trim(),
     ที่ตั้ง:            document.getElementById('e-loc').value.trim(),
-    ประเภทสินค้า:      document.getElementById('e-type').value.trim(),
+    โทรศัพท์:          document.getElementById('e-phone').value.trim(),
+    จำนวนสมาชิก:      document.getElementById('e-member').value.trim(),
+    กำลังการผลิต:     document.getElementById('e-capacity').value.trim(),
+    รายได้เฉลี่ย:     document.getElementById('e-income').value.trim(),
     ชื่อแบรนด์:        document.getElementById('e-brand').value.trim(),
-    มาตรฐาน:          document.getElementById('e-std').value.trim(),
-    ระยะเวลา:         document.getElementById('e-age').value.trim(),
-    tier:             editTier ? 'TIER ' + editTier : '',
-    ส่งออก:           editCheckStates['ส่งออก']      || false,
-    ในประเทศ:         editCheckStates['ในประเทศ']    || false,
-    ออนไลน์:          editCheckStates['ออนไลน์']     || false,
-    ขายในพื้นที่:      editCheckStates['ขายในพื้นที่'] || false,
-    อื่นๆ:            document.getElementById('e-etc').value.trim(),
-    หมายเหตุ:         document.getElementById('e-note').value.trim(),
-
-    // ── อบรม / สัมมนา ──────────────────────────
-    อบรม_เวลา:        document.getElementById('e-tr-period').value.trim(),
-    อบรม_สถานที่:     document.getElementById('e-tr-place').value.trim(),
-    อบรม_หัวข้อ:      document.getElementById('e-tr-topic').value.trim(),
-    อบรม_หน่วยงาน:   document.getElementById('e-tr-org').value.trim(),
-
-    // ── ศึกษาดูงาน ─────────────────────────────
-    ดูงาน_เวลา:       document.getElementById('e-st-period').value.trim(),
-    ดูงาน_สถานที่:    document.getElementById('e-st-place').value.trim(),
-    ดูงาน_หัวข้อ:     document.getElementById('e-st-topic').value.trim(),
-    ดูงาน_ผล:         document.getElementById('e-st-result').value.trim(),
-    ดูงาน_หน่วยงาน:  document.getElementById('e-st-org').value.trim(),
-
-    // ── จำหน่ายสินค้า ──────────────────────────
-    จำหน่าย_เวลา:        document.getElementById('e-sa-period').value.trim(),
-    จำหน่าย_สถานที่:     document.getElementById('e-sa-place').value.trim(),
-    จำหน่าย_ชื่องาน:     document.getElementById('e-sa-event').value.trim(),
-    จำหน่าย_หน่วยงาน:   document.getElementById('e-sa-org').value.trim(),
-    จำหน่าย_ในจังหวัด:   document.getElementById('e-sa-local').value.trim(),
-    จำหน่าย_ต่างจังหวัด: document.getElementById('e-sa-other').value.trim(),
-    จำหน่าย_trade:       document.getElementById('e-sa-modern').value.trim(),
-    จำหน่าย_ต่างประเทศ:  document.getElementById('e-sa-export').value.trim(),
+    ประเภท_OTOP:           editCheckStates['OTOP']           || false,
+    ประเภท_SMEs:           editCheckStates['SMEs']           || false,
+    ประเภท_วิสาหกิจชุมชน: editCheckStates['วิสาหกิจชุมชน'] || false,
+    ประเภท_StartUp:        editCheckStates['StartUp']        || false,
+    ประเภท_บริษัทฯ:        editCheckStates['บริษัทฯ']        || false,
+    ประเภท_อื่นๆ:          document.getElementById('e-ประเภท_อื่นๆ').value.trim(),
+    สินค้า_อาหาร:          editCheckStates['สินค้าอาหาร']   || false,
+    สินค้า_ผ้า:             editCheckStates['สินค้าผ้า']     || false,
+    สินค้า_ของใช้:          editCheckStates['สินค้าของใช้']  || false,
+    สินค้า_สมุนไพร:         editCheckStates['สินค้าสมุนไพร'] || false,
+    สินค้า_เกษตร:           editCheckStates['สินค้าเกษตร']  || false,
+    สินค้า_อื่นๆ:           document.getElementById('e-สินค้า_อื่นๆ').value.trim(),
+    มาตรฐาน_OTOP3_5:       editCheckStates['OTOP3-5']  || false,
+    มาตรฐาน_มผช:           editCheckStates['มผช']      || false,
+    มาตรฐาน_อย:            editCheckStates['อย']       || false,
+    มาตรฐาน_GAP:           editCheckStates['GAP']      || false,
+    มาตรฐาน_GMP:           editCheckStates['GMP']      || false,
+    มาตรฐาน_NBLBrand:      editCheckStates['NBLBrand'] || false,
+    มาตรฐาน_อื่นๆ:         document.getElementById('e-มาตรฐาน_อื่นๆ').value.trim(),
+    tier:     editTier ? 'TIER ' + editTier : '',
+    หมายเหตุ: document.getElementById('e-note').value.trim(),
   };
 
   try {
