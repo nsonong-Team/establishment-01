@@ -1,0 +1,93 @@
+/* ── Input ── */
+input[type=text] {
+  width: 100%;
+  padding: 9px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 14px; color: var(--text-b);
+  background: #fafbfd;
+  transition: 0.2s; outline: none;
+}
+
+input[type=text]:focus {
+  border-color: #1565c0;
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
+  background: #fff;
+}
+
+.manual-row {
+  margin-top: 10px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text-b);
+}
+
+.manual-row input[type=checkbox] { width: auto; margin: 0; cursor: pointer; }
+
+/* ── Search & Dropdown ── */
+.search-wrap { position: relative; }
+
+.search-icon {
+  position: absolute;
+  left: 11px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+#bizSearch { padding-left: 34px; }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px); left: 0; right: 0;
+  background: #fff;
+  border: 1.5px solid #90b4f0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(13, 71, 161, 0.15);
+  z-index: 200;
+  max-height: 220px; overflow-y: auto;
+  display: none;
+}
+
+.dropdown.open { display: block; }
+
+.drop-item {
+  padding: 10px 14px;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid #f0f4f8;
+  color: var(--text-b);
+}
+
+.drop-item:last-child { border-bottom: none; }
+.drop-item:hover,
+.drop-item.active { background: #e8f0fe; color: var(--primary); font-weight: 600; }
+.drop-item mark   { background: none; color: var(--primary); font-weight: 700; }
+
+.drop-empty {
+  padding: 12px 14px;
+  font-size: 13px; color: #90a4ae;
+  text-align: center;
+}
+
+/* ── Selected Biz ── */
+.selected-biz {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #e8f0fe;
+  border-radius: 8px;
+  font-size: 13px; color: var(--primary); font-weight: 600;
+  display: none; align-items: center; gap: 6px;
+}
+
+.selected-biz span { flex: 1; }
+
+.selected-biz button {
+  background: none; border: none;
+  cursor: pointer; font-size: 16px;
+  color: #90a4ae; padding: 0; line-height: 1;
+}
+
+.selected-biz button:hover { color: #e65100; }

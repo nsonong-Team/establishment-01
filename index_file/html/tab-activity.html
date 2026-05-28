@@ -1,0 +1,146 @@
+  <div class="sub-tab-bar">
+    <button class="sub-tab-btn active" onclick="showSubTab('act','form')">📝 กรอกข้อมูล</button>
+    <button class="sub-tab-btn" onclick="showSubTab('act','view')">📋 ดูข้อมูล</button>
+  </div>
+  <div id="sub-act-form">
+
+  <!-- ── ผู้ใส่ข้อมูล ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">👤</div>ชื่อผู้ใส่ข้อมูล</div>
+    <div class="form-grid three">
+      <div class="form-group"><label>ชื่อผู้ใส่ข้อมูล</label><input type="text" id="act-rep" placeholder="ชื่อ - นามสกุล..."></div>
+      <div class="form-group"><label>ตำแหน่ง</label><input type="text" id="act-pos" placeholder="ตำแหน่งงาน..."></div>
+      <div class="form-group"><label>หน่วยงาน</label><input type="text" id="act-ag" placeholder="ชื่อหน่วยงาน / สังกัด..."></div>
+    </div>
+  </div>
+
+  <!-- ── ข้อมูลสถานประกอบการ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏭</div>ข้อมูลสถานประกอบการ</div>
+    <div class="form-group">
+      <label>ชื่อสถานประกอบการ <span class="required">*</span></label>
+      <input type="text" id="act-biz" placeholder="ชื่อกิจการ / ร้านค้า...">
+    </div>
+  </div>
+
+  <!-- ── อบรม / สัมมนา ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🎓</div>อบรม / สัมมนา</div>
+    <div class="form-grid">
+      <div class="form-group"><label>ช่วงเวลาที่อบรม</label><input type="text" id="act-tr-period" placeholder="เช่น ม.ค. 2568"></div>
+      <div class="form-group"><label>สถานที่อบรม</label><input type="text" id="act-tr-place" placeholder="สถานที่จัดอบรม..."></div>
+      <div class="form-group"><label>หัวข้อที่อบรม</label><input type="text" id="act-tr-topic" placeholder="หัวข้ออบรม..."></div>
+      <div class="form-group"><label>หน่วยงานที่จัดอบรม</label><input type="text" id="act-tr-org" placeholder="ชื่อหน่วยงาน..."></div>
+    </div>
+  </div>
+
+  <!-- ── ศึกษาดูงาน ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🔍</div>ศึกษาดูงาน</div>
+    <div class="form-grid">
+      <div class="form-group"><label>ช่วงเวลาที่ดูงาน</label><input type="text" id="act-st-period" placeholder="เช่น ม.ค. 2568"></div>
+      <div class="form-group"><label>สถานที่ดูงาน</label><input type="text" id="act-st-place" placeholder="สถานที่ดูงาน..."></div>
+      <div class="form-group"><label>หัวข้อที่ดูงาน</label><input type="text" id="act-st-topic" placeholder="หัวข้อดูงาน..."></div>
+      <div class="form-group"><label>หน่วยงานที่จัด</label><input type="text" id="act-st-org" placeholder="ชื่อหน่วยงาน..."></div>
+      <div class="form-group"><label>ผลการดำเนินงาน</label><input type="text" id="act-st-result" placeholder="ผลที่ได้รับ..."></div>
+    </div>
+  </div>
+
+  <!-- ── ช่องทางการจำหน่ายสินค้า ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🛒</div>ช่องทางการจำหน่ายสินค้า</div>
+    <div class="form-grid" style="margin-bottom:14px">
+      <div class="form-group"><label>ช่วงเวลาขายสินค้า</label><input type="text" id="act-sa-period" placeholder="เช่น ม.ค. 2568"></div>
+      <div class="form-group"><label>สถานที่ขายสินค้า</label><input type="text" id="act-sa-place" placeholder="สถานที่จำหน่าย..."></div>
+      <div class="form-group"><label>ชื่องาน</label><input type="text" id="act-sa-event" placeholder="ชื่องาน/กิจกรรม..."></div>
+      <div class="form-group"><label>หน่วยงานที่จัด</label><input type="text" id="act-sa-org" placeholder="ชื่อหน่วยงาน..."></div>
+    </div>
+
+    <div class="panel-title" style="font-size:13px;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #e3eaf6">💰 ช่องทางการจำหน่าย</div>
+
+    <div class="channel-row">
+      <div class="check-item" id="act-item-ในจังหวัด" onclick="toggleActCheck('ในจังหวัด')">
+        <div class="checkmark">✓</div><span>🏠 ภายในจังหวัด</span>
+      </div>
+      <div class="form-group" style="margin:0">
+        <input type="number" id="act-sa-local-val" placeholder="มูลค่า (บาท)" min="0">
+      </div>
+    </div>
+    <div class="channel-row">
+      <div class="check-item" id="act-item-ต่างจังหวัด" onclick="toggleActCheck('ต่างจังหวัด')">
+        <div class="checkmark">✓</div><span>🚚 ต่างจังหวัด</span>
+      </div>
+      <div class="form-group" style="margin:0">
+        <input type="number" id="act-sa-other-val" placeholder="มูลค่า (บาท)" min="0">
+      </div>
+    </div>
+    <div class="channel-row">
+      <div class="check-item" id="act-item-ModernTrade" onclick="toggleActCheck('ModernTrade')">
+        <div class="checkmark">✓</div><span>🏪 Modern Trade</span>
+      </div>
+      <div class="form-group" style="margin:0">
+        <input type="number" id="act-sa-modern-val" placeholder="มูลค่า (บาท)" min="0">
+      </div>
+    </div>
+    <div class="channel-row">
+      <div class="check-item" id="act-item-ต่างประเทศ" onclick="toggleActCheck('ต่างประเทศ')">
+        <div class="checkmark">✓</div><span>🌏 ต่างประเทศ</span>
+      </div>
+      <div class="form-group" style="margin:0">
+        <input type="number" id="act-sa-export-val" placeholder="มูลค่า (บาท)" min="0">
+      </div>
+    </div>
+    <div class="channel-row">
+      <div class="check-item" id="act-item-อื่นๆ" onclick="toggleActCheck('อื่นๆ')">
+        <div class="checkmark">✓</div><span>📦 อื่นๆ</span>
+      </div>
+      <div class="form-group" style="margin:0">
+        <input type="text" id="act-sa-other-name" placeholder="ระบุช่องทางอื่น...">
+      </div>
+    </div>
+  </div>
+
+  <!-- ── หมายเหตุ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">📝</div>หมายเหตุ</div>
+    <div class="form-group">
+      <textarea id="act-note" placeholder="หมายเหตุเพิ่มเติม (ถ้ามี)..."></textarea>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:8px">
+    <button class="btn-submit" id="btnSubmitAct" onclick="handleSubmitAct()">
+      <span id="btnTextAct">💾 บันทึกข้อมูล</span>
+    </button>
+  </div>
+  </div><!-- /sub-act-form -->
+
+  <div id="sub-act-view" style="display:none">
+    <div class="panel">
+      <div class="panel-title"><div class="icon">📋</div>ข้อมูลผลการดำเนินงานทั้งหมด</div>
+      <div class="filter-bar">
+        <label>🔍 ค้นหา:</label>
+        <input class="filter-input" id="actSearch" placeholder="ชื่อผู้ใส่ข้อมูล..." oninput="applyActFilter()">
+        <span class="filter-count" id="actFilterCount"></span>
+        <button class="btn-clear-filter" onclick="clearActFilter()">✕ ล้าง</button>
+        <button class="btn-refresh" onclick="loadActTableData()">🔄 รีเฟรช</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th><th>แก้ไข</th>
+            <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+            <th>ชื่อสถานประกอบการ</th>
+            <th>อบรม_ช่วงเวลา</th><th>อบรม_สถานที่</th><th>อบรม_หัวข้อ</th><th>อบรม_หน่วยงาน</th>
+            <th>ดูงาน_ช่วงเวลา</th><th>ดูงาน_สถานที่</th><th>ดูงาน_หัวข้อ</th><th>ดูงาน_หน่วยงาน</th><th>ดูงาน_ผล</th>
+            <th>จำหน่าย_ช่วงเวลา</th><th>จำหน่าย_สถานที่</th><th>จำหน่าย_ชื่องาน</th><th>จำหน่าย_หน่วยงาน</th>
+            <th>ช่องทางจำหน่าย</th>
+            <th>หมายเหตุ</th><th>วันที่บันทึก</th>
+          </tr></thead>
+          <tbody id="actTableBody">
+            <tr><td colspan="20"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- /sub-act-view -->

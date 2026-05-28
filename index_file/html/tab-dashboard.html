@@ -1,0 +1,79 @@
+  <!-- ── KPI Row ── -->
+  <div class="kpi-grid">
+    <div class="kpi-card c1"><div class="kpi-num" id="kpi-total">—</div><div class="kpi-label">ผู้ประกอบการทั้งหมด</div></div>
+    <div class="kpi-card c2"><div class="kpi-num" id="kpi-tier1">—</div><div class="kpi-label">TIER 1</div></div>
+    <div class="kpi-card c3"><div class="kpi-num" id="kpi-tier2">—</div><div class="kpi-label">TIER 2</div></div>
+    <div class="kpi-card c4"><div class="kpi-num" id="kpi-tier3">—</div><div class="kpi-label">TIER 3</div></div>
+  </div>
+
+  <!-- ── Donut + ช่องทางการตลาด ── -->
+  <div class="dash-grid">
+    <div class="chart-panel">
+      <div class="chart-title">🎯 สัดส่วนตาม TIER</div>
+      <div class="donut-wrap">
+        <div class="donut" id="donutTier">
+          <div class="donut-hole"><div class="donut-total" id="donutTotal">0</div><div class="donut-sub">ทั้งหมด</div></div>
+        </div>
+        <div class="legend" id="tierLegend"></div>
+      </div>
+    </div>
+    <div class="chart-panel">
+      <div class="chart-title">📢 ช่องทางการตลาด</div>
+      <div class="ch-grid">
+        <div class="ch-card"><div class="ch-icon">🌏</div><div><div class="ch-count" id="ch-export">—</div><div class="ch-name">ส่งออกต่างประเทศ</div></div></div>
+        <div class="ch-card"><div class="ch-icon">🇹🇭</div><div><div class="ch-count" id="ch-dom">—</div><div class="ch-name">ในประเทศ</div></div></div>
+        <div class="ch-card"><div class="ch-icon">💻</div><div><div class="ch-count" id="ch-online">—</div><div class="ch-name">ออนไลน์</div></div></div>
+        <div class="ch-card"><div class="ch-icon">🏪</div><div><div class="ch-count" id="ch-local">—</div><div class="ch-name">ขายในพื้นที่</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ประเภทสินค้า + หน่วยงาน ── -->
+  <div class="dash-grid" style="margin-top:18px">
+    <div class="chart-panel">
+      <div class="chart-title">🏷️ ประเภทสินค้า / บริการ (Top 8)</div>
+      <div id="typeChart"><div style="color:#90a4ae;font-size:13px">ยังไม่มีข้อมูล</div></div>
+    </div>
+    <div class="chart-panel">
+      <div class="chart-title">🏛️ จำนวนผู้ประกอบการแยกตามหน่วยงาน</div>
+      <div id="agencyChart"><div style="color:#90a4ae;font-size:13px">ยังไม่มีข้อมูล</div></div>
+    </div>
+  </div>
+
+  <!-- ── Section: ผลการดำเนินงาน ── -->
+  <div class="dash-section-title" style="margin-top:28px;margin-bottom:14px;font-size:15px;font-weight:700;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:8px">
+    📋 สถิติผลการดำเนินงาน
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card c1"><div class="kpi-num" id="kpi-act-train">—</div><div class="kpi-label">เข้าอบรม/สัมมนา</div></div>
+    <div class="kpi-card c2"><div class="kpi-num" id="kpi-act-study">—</div><div class="kpi-label">ศึกษาดูงาน</div></div>
+    <div class="kpi-card c3"><div class="kpi-num" id="kpi-act-sales">—</div><div class="kpi-label">ออกบูธ/จำหน่าย</div></div>
+    <div class="kpi-card c4"><div class="kpi-num" id="kpi-act-value">—</div><div class="kpi-label">มูลค่าจำหน่ายรวม (บาท)</div></div>
+  </div>
+
+  <div class="chart-panel" style="margin-top:18px">
+    <div class="chart-title">💰 มูลค่าจำหน่ายแยกตามช่องทาง</div>
+    <div id="salesChart"><div style="color:#90a4ae;font-size:13px">ยังไม่มีข้อมูล</div></div>
+  </div>
+
+  <!-- ── Section: การส่งเสริม/พัฒนา ── -->
+  <div class="dash-section-title" style="margin-top:28px;margin-bottom:14px;font-size:15px;font-weight:700;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:8px">
+    🚀 สถิติการส่งเสริม / พัฒนาผู้ประกอบการ
+  </div>
+
+  <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="kpi-card c1"><div class="kpi-num" id="kpi-pro-total">—</div><div class="kpi-label">ผู้ประกอบการที่เข้าร่วม</div></div>
+    <div class="kpi-card c2"><div class="kpi-num" id="kpi-pro-top">—</div><div class="kpi-label">หมวดที่ถูกเลือกมากสุด</div></div>
+    <div class="kpi-card c3"><div class="kpi-num" id="kpi-pro-items">—</div><div class="kpi-label">รายการที่ถูกเลือกทั้งหมด</div></div>
+  </div>
+
+  <div class="chart-panel" style="margin-top:18px">
+    <div class="chart-title">⭐ Top 5 กิจกรรมที่ถูกเลือกมากสุด</div>
+    <div id="proTopChart"><div style="color:#90a4ae;font-size:13px">ยังไม่มีข้อมูล</div></div>
+  </div>
+
+  <div class="chart-panel" style="margin-top:18px">
+    <div class="chart-title">📊 สัดส่วนการเลือกแต่ละหมวด</div>
+    <div id="proHmwdChart"><div style="color:#90a4ae;font-size:13px">ยังไม่มีข้อมูล</div></div>
+  </div>

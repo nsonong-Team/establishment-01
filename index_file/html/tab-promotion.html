@@ -1,0 +1,169 @@
+  <div class="sub-tab-bar">
+    <button class="sub-tab-btn active" onclick="showSubTab('pro','form')">📝 กรอกข้อมูล</button>
+    <button class="sub-tab-btn" onclick="showSubTab('pro','view')">📋 ดูข้อมูล</button>
+  </div>
+  <div id="sub-pro-form">
+
+    <!-- ── ผู้ใส่ข้อมูล ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">👤</div>ชื่อผู้ใส่ข้อมูล</div>
+      <div class="form-grid three">
+        <div class="form-group"><label>ชื่อผู้ใส่ข้อมูล</label><input type="text" id="pro-rep" placeholder="ชื่อ - นามสกุล..."></div>
+        <div class="form-group"><label>ตำแหน่ง</label><input type="text" id="pro-pos" placeholder="ตำแหน่งงาน..."></div>
+        <div class="form-group"><label>หน่วยงาน</label><input type="text" id="pro-ag" placeholder="ชื่อหน่วยงาน / สังกัด..."></div>
+      </div>
+    </div>
+
+    <!-- ── ข้อมูลสถานประกอบการ ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🏭</div>ข้อมูลสถานประกอบการ</div>
+      <div class="form-group">
+        <label>ชื่อสถานประกอบการ <span class="required">*</span></label>
+        <input type="text" id="pro-biz" placeholder="ชื่อกิจการ / ร้านค้า...">
+      </div>
+    </div>
+
+    <!-- ── หมวด 1 ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">📢</div>1. การตลาดและการสร้างแบรนด์</div>
+      <div class="checkbox-group">
+        <div class="check-item" id="pro-item-หมวด1_การวางแผนกลยุทธ์การตลาด"        onclick="toggleProCheck('หมวด1_การวางแผนกลยุทธ์การตลาด')"><div class="checkmark">✓</div><span>การวางแผนกลยุทธ์การตลาด</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การสร้างแบรนด์"                   onclick="toggleProCheck('หมวด1_การสร้างแบรนด์')"><div class="checkmark">✓</div><span>การสร้างแบรนด์ (Branding)</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การออกแบบบรรจุภัณฑ์"             onclick="toggleProCheck('หมวด1_การออกแบบบรรจุภัณฑ์')"><div class="checkmark">✓</div><span>การออกแบบบรรจุภัณฑ์ (Packaging)</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การเจาะตลาดออนไลน์"              onclick="toggleProCheck('หมวด1_การเจาะตลาดออนไลน์')"><div class="checkmark">✓</div><span>การเจาะตลาดออนไลน์ (E-commerce, Social Commerce)</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การเข้าร่วมงานแสดงสินค้า"        onclick="toggleProCheck('หมวด1_การเข้าร่วมงานแสดงสินค้า')"><div class="checkmark">✓</div><span>การเข้าร่วมงานแสดงสินค้า/เจรจาธุรกิจ</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การวิเคราะห์ตลาด"                onclick="toggleProCheck('หมวด1_การวิเคราะห์ตลาด')"><div class="checkmark">✓</div><span>การวิเคราะห์ตลาดและพฤติกรรมผู้บริโภค</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การสร้างอัตลักษณ์สินค้า"         onclick="toggleProCheck('หมวด1_การสร้างอัตลักษณ์สินค้า')"><div class="checkmark">✓</div><span>การสร้างอัตลักษณ์สินค้า</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การส่งเสริมภูมิปัญญาท้องถิ่น"   onclick="toggleProCheck('หมวด1_การส่งเสริมภูมิปัญญาท้องถิ่น')"><div class="checkmark">✓</div><span>การส่งเสริมภูมิปัญญาท้องถิ่น</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การสร้างเครือข่ายธุรกิจ"         onclick="toggleProCheck('หมวด1_การสร้างเครือข่ายธุรกิจ')"><div class="checkmark">✓</div><span>การสร้างเครือข่ายธุรกิจ (Networking)</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การตลาดออนไลน์เชิงAI"            onclick="toggleProCheck('หมวด1_การตลาดออนไลน์เชิงAI')"><div class="checkmark">✓</div><span>การตลาดออนไลน์เชิง AI</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การสร้างแบรนด์ยั่งยืนBCG"        onclick="toggleProCheck('หมวด1_การสร้างแบรนด์ยั่งยืนBCG')"><div class="checkmark">✓</div><span>การสร้างแบรนด์ยั่งยืนตามแนวทาง BCG</span></div>
+        <div class="check-item" id="pro-item-หมวด1_BigData_AI"                        onclick="toggleProCheck('หมวด1_BigData_AI')"><div class="checkmark">✓</div><span>การใช้ Big Data และ AI เพื่อเจาะตลาดออนไลน์</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การตลาดสีเขียว"                   onclick="toggleProCheck('หมวด1_การตลาดสีเขียว')"><div class="checkmark">✓</div><span>การตลาดสีเขียวและการสื่อสารความยั่งยืน</span></div>
+        <div class="check-item" id="pro-item-หมวด1_การตลาดQRCode"                    onclick="toggleProCheck('หมวด1_การตลาดQRCode')"><div class="checkmark">✓</div><span>การตลาดด้วย QR Code</span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>อื่นๆ (โปรดระบุ)</label>
+        <input type="text" id="pro-หมวด1-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+    </div>
+
+    <!-- ── หมวด 2 ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🏅</div>2. การพัฒนาผลิตภัณฑ์และมาตรฐาน</div>
+      <div class="checkbox-group">
+        <div class="check-item" id="pro-item-หมวด2_การพัฒนาคุณภาพผลผลิต"            onclick="toggleProCheck('หมวด2_การพัฒนาคุณภาพผลผลิต')"><div class="checkmark">✓</div><span>การพัฒนาคุณภาพผลผลิตทางการเกษตร</span></div>
+        <div class="check-item" id="pro-item-หมวด2_การแปรรูปสินค้าเกษตร"             onclick="toggleProCheck('หมวด2_การแปรรูปสินค้าเกษตร')"><div class="checkmark">✓</div><span>การแปรรูปสินค้าเกษตร</span></div>
+        <div class="check-item" id="pro-item-หมวด2_GAP_Organic"                       onclick="toggleProCheck('หมวด2_GAP_Organic')"><div class="checkmark">✓</div><span>การรับรองมาตรฐาน GAP/Organic</span></div>
+        <div class="check-item" id="pro-item-หมวด2_มอก_ISO"                           onclick="toggleProCheck('หมวด2_มอก_ISO')"><div class="checkmark">✓</div><span>การขอรับรอง มอก./ISO</span></div>
+        <div class="check-item" id="pro-item-หมวด2_อย_GMP_HACCP"                      onclick="toggleProCheck('หมวด2_อย_GMP_HACCP')"><div class="checkmark">✓</div><span>การขอ อย./GMP/HACCP</span></div>
+        <div class="check-item" id="pro-item-หมวด2_การพัฒนาสูตรผลิตภัณฑ์"           onclick="toggleProCheck('หมวด2_การพัฒนาสูตรผลิตภัณฑ์')"><div class="checkmark">✓</div><span>การพัฒนาสูตรผลิตภัณฑ์ให้ปลอดภัย</span></div>
+        <div class="check-item" id="pro-item-หมวด2_LabTest"                            onclick="toggleProCheck('หมวด2_LabTest')"><div class="checkmark">✓</div><span>การตรวจสอบคุณภาพสินค้า (Lab Test)</span></div>
+        <div class="check-item" id="pro-item-หมวด2_สุขอนามัยการผลิต"                 onclick="toggleProCheck('หมวด2_สุขอนามัยการผลิต')"><div class="checkmark">✓</div><span>การให้ความรู้ด้านสุขอนามัยในการผลิต</span></div>
+        <div class="check-item" id="pro-item-หมวด2_ฉลากโภชนาการ"                     onclick="toggleProCheck('หมวด2_ฉลากโภชนาการ')"><div class="checkmark">✓</div><span>การติดฉลากโภชนาการ/คำเตือน</span></div>
+        <div class="check-item" id="pro-item-หมวด2_ความเสี่ยงสุขภาพ"                 onclick="toggleProCheck('หมวด2_ความเสี่ยงสุขภาพ')"><div class="checkmark">✓</div><span>การจัดการความเสี่ยงด้านสุขภาพผู้บริโภค</span></div>
+        <div class="check-item" id="pro-item-หมวด2_OTOP"                               onclick="toggleProCheck('หมวด2_OTOP')"><div class="checkmark">✓</div><span>การพัฒนาผลิตภัณฑ์ชุมชน (OTOP)</span></div>
+        <div class="check-item" id="pro-item-หมวด2_ออกแบบผลิตภัณฑ์เชิงอุตสาหกรรม"  onclick="toggleProCheck('หมวด2_ออกแบบผลิตภัณฑ์เชิงอุตสาหกรรม')"><div class="checkmark">✓</div><span>การออกแบบผลิตภัณฑ์เชิงอุตสาหกรรม</span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>อื่นๆ (โปรดระบุ)</label>
+        <input type="text" id="pro-หมวด2-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+    </div>
+
+    <!-- ── หมวด 3 ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🏭</div>3. การผลิตและอุตสาหกรรม</div>
+      <div class="checkbox-group">
+        <div class="check-item" id="pro-item-หมวด3_ต้นทุนการผลิต"                    onclick="toggleProCheck('หมวด3_ต้นทุนการผลิต')"><div class="checkmark">✓</div><span>การจัดการต้นทุนการผลิต</span></div>
+        <div class="check-item" id="pro-item-หมวด3_เทคโนโลยีเกษตรสมัยใหม่"          onclick="toggleProCheck('หมวด3_เทคโนโลยีเกษตรสมัยใหม่')"><div class="checkmark">✓</div><span>การใช้เทคโนโลยีเกษตรสมัยใหม่</span></div>
+        <div class="check-item" id="pro-item-หมวด3_Lean_Productivity"                 onclick="toggleProCheck('หมวด3_Lean_Productivity')"><div class="checkmark">✓</div><span>การพัฒนากระบวนการผลิต (Lean, Productivity)</span></div>
+        <div class="check-item" id="pro-item-หมวด3_มาตรฐานโรงงาน"                    onclick="toggleProCheck('หมวด3_มาตรฐานโรงงาน')"><div class="checkmark">✓</div><span>การยกระดับมาตรฐานโรงงาน/สถานประกอบการ</span></div>
+        <div class="check-item" id="pro-item-หมวด3_เครื่องจักรและเทคโนโลยี"          onclick="toggleProCheck('หมวด3_เครื่องจักรและเทคโนโลยี')"><div class="checkmark">✓</div><span>การใช้เครื่องจักรและเทคโนโลยีใหม่</span></div>
+        <div class="check-item" id="pro-item-หมวด3_สิ่งแวดล้อมโรงงาน"               onclick="toggleProCheck('หมวด3_สิ่งแวดล้อมโรงงาน')"><div class="checkmark">✓</div><span>การจัดการสิ่งแวดล้อมในโรงงาน</span></div>
+        <div class="check-item" id="pro-item-หมวด3_อุตสาหกรรมท้องถิ่น"              onclick="toggleProCheck('หมวด3_อุตสาหกรรมท้องถิ่น')"><div class="checkmark">✓</div><span>การพัฒนาอุตสาหกรรมท้องถิ่น</span></div>
+        <div class="check-item" id="pro-item-หมวด3_อุตสาหกรรม4_0"                   onclick="toggleProCheck('หมวด3_อุตสาหกรรม4_0')"><div class="checkmark">✓</div><span>การยกระดับโรงงานเข้าสู่อุตสาหกรรม ๔.๐</span></div>
+        <div class="check-item" id="pro-item-หมวด3_เชื่อมโยงการผลิตขนาดใหญ่"        onclick="toggleProCheck('หมวด3_เชื่อมโยงการผลิตขนาดใหญ่')"><div class="checkmark">✓</div><span>การเชื่อมโยงกับภาคการผลิตขนาดใหญ่</span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>อื่นๆ (โปรดระบุ)</label>
+        <input type="text" id="pro-หมวด3-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+    </div>
+
+    <!-- ── หมวด 4 ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🤝</div>4. การรวมกลุ่มและการพัฒนาชุมชน</div>
+      <div class="checkbox-group">
+        <div class="check-item" id="pro-item-หมวด4_รวมกลุ่มเกษตรกร"                 onclick="toggleProCheck('หมวด4_รวมกลุ่มเกษตรกร')"><div class="checkmark">✓</div><span>การรวมกลุ่มเกษตรกรเพื่อเพิ่มอำนาจต่อรอง</span></div>
+        <div class="check-item" id="pro-item-หมวด4_รวมกลุ่มพัฒนาศักยภาพ"            onclick="toggleProCheck('หมวด4_รวมกลุ่มพัฒนาศักยภาพ')"><div class="checkmark">✓</div><span>การรวมกลุ่มและพัฒนาศักยภาพกลุ่ม</span></div>
+        <div class="check-item" id="pro-item-หมวด4_แหล่งเรียนรู้ชุมชน"              onclick="toggleProCheck('หมวด4_แหล่งเรียนรู้ชุมชน')"><div class="checkmark">✓</div><span>การพัฒนาแหล่งเรียนรู้ชุมชน</span></div>
+        <div class="check-item" id="pro-item-หมวด4_พัฒนาทักษะแรงงาน"               onclick="toggleProCheck('หมวด4_พัฒนาทักษะแรงงาน')"><div class="checkmark">✓</div><span>การพัฒนาทักษะแรงงาน</span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>อื่นๆ (โปรดระบุ)</label>
+        <input type="text" id="pro-หมวด4-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+    </div>
+
+    <!-- ── หมวด 5 ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">💰</div>5. การบริหารจัดการและการเงิน</div>
+      <div class="checkbox-group">
+        <div class="check-item" id="pro-item-หมวด5_จดทะเบียนเครื่องหมายการค้า"      onclick="toggleProCheck('หมวด5_จดทะเบียนเครื่องหมายการค้า')"><div class="checkmark">✓</div><span>การจดทะเบียนเครื่องหมายการค้า</span></div>
+        <div class="check-item" id="pro-item-หมวด5_บัญชีครัวเรือน"                   onclick="toggleProCheck('หมวด5_บัญชีครัวเรือน')"><div class="checkmark">✓</div><span>การจัดทำบัญชีครัวเรือน/บัญชีต้นทุน</span></div>
+        <div class="check-item" id="pro-item-หมวด5_แหล่งทุน_สินเชื่อ"               onclick="toggleProCheck('หมวด5_แหล่งทุน_สินเชื่อ')"><div class="checkmark">✓</div><span>การเข้าถึงแหล่งทุน/สินเชื่อ</span></div>
+        <div class="check-item" id="pro-item-หมวด5_ภาษี_บัญชี_กฎหมาย"              onclick="toggleProCheck('หมวด5_ภาษี_บัญชี_กฎหมาย')"><div class="checkmark">✓</div><span>การอบรมด้านภาษี/บัญชี/กฎหมายธุรกิจ</span></div>
+        <div class="check-item" id="pro-item-หมวด5_คำปรึกษาการบริหาร"               onclick="toggleProCheck('หมวด5_คำปรึกษาการบริหาร')"><div class="checkmark">✓</div><span>การให้คำปรึกษาด้านการบริหารจัดการ</span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>อื่นๆ (โปรดระบุ)</label>
+        <input type="text" id="pro-หมวด5-อื่นๆ" placeholder="ระบุเพิ่มเติม...">
+      </div>
+    </div>
+
+    <!-- ── หมายเหตุ ── -->
+    <div class="panel">
+      <div class="panel-title"><div class="icon">📝</div>หมายเหตุ</div>
+      <div class="form-group">
+        <textarea id="pro-note" placeholder="หมายเหตุเพิ่มเติม (ถ้ามี)..."></textarea>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:8px">
+      <button class="btn-submit" id="btnSubmitPro" onclick="handleSubmitPro()">
+        <span id="btnTextPro">💾 บันทึกข้อมูล</span>
+      </button>
+    </div>
+  </div><!-- /sub-pro-form -->
+
+  <div id="sub-pro-view" style="display:none">
+    <div class="panel">
+      <div class="panel-title"><div class="icon">🚀</div>ข้อมูลการส่งเสริม/พัฒนาทั้งหมด</div>
+      <div class="filter-bar">
+        <label>🔍 ค้นหา:</label>
+        <input class="filter-input" id="proSearch" placeholder="ชื่อสถานประกอบการ / ผู้ใส่ข้อมูล..." oninput="applyProFilter()">
+        <span class="filter-count" id="proFilterCount"></span>
+        <button class="btn-clear-filter" onclick="clearProFilter()">✕ ล้าง</button>
+        <button class="btn-refresh" onclick="loadProTableData()">🔄 รีเฟรช</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th><th>แก้ไข</th>
+            <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+            <th>ชื่อสถานประกอบการ</th>
+            <th>หมวด 1 การตลาด</th>
+            <th>หมวด 2 ผลิตภัณฑ์/มาตรฐาน</th>
+            <th>หมวด 3 การผลิต</th>
+            <th>หมวด 4 รวมกลุ่ม</th>
+            <th>หมวด 5 การบริหาร</th>
+            <th>หมายเหตุ</th><th>วันที่บันทึก</th>
+          </tr></thead>
+          <tbody id="proTableBody">
+            <tr><td colspan="13"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- /sub-pro-view -->

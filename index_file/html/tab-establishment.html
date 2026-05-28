@@ -1,0 +1,180 @@
+  <div class="sub-tab-bar">
+    <button class="sub-tab-btn active" onclick="showSubTab('est','form')">📝 กรอกข้อมูล</button>
+    <button class="sub-tab-btn" onclick="showSubTab('est','view')">📋 ดูข้อมูล</button>
+  </div>
+
+  <div id="sub-est-form">
+
+  <!-- ── ผู้ใส่ข้อมูล ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">👤</div>ชื่อผู้ใส่ข้อมูล</div>
+    <div class="search-wrap" id="repSearchWrap" style="position:relative;margin-bottom:10px">
+      <input type="text" id="repSearch" placeholder="พิมพ์ชื่อเพื่อค้นหา..." oninput="filterRep()" autocomplete="off">
+      <div class="dropdown" id="repDropdown"></div>
+    </div>
+    <div class="form-grid three">
+      <div class="form-group"><label>ชื่อผู้ใส่ข้อมูล</label><input type="text" id="ชื่อใส่ข้อมูล" placeholder="ชื่อ - นามสกุล..."></div>
+      <div class="form-group"><label>ตำแหน่ง</label><input type="text" id="ตำแหน่ง" placeholder="ตำแหน่งงาน..."></div>
+      <div class="form-group"><label>หน่วยงาน</label><input type="text" id="หน่วยงานผู้ใส่ข้อมูล" placeholder="ชื่อหน่วยงาน / สังกัด..."></div>
+    </div>
+  </div>
+
+  <!-- ── ข้อมูลสถานประกอบการ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏭</div>ข้อมูลสถานประกอบการ</div>
+    <div class="form-grid">
+      <div class="form-group"><label>ชื่อสถานประกอบการ <span class="required">*</span></label><input type="text" id="ชื่อสถานประกอบการ" placeholder="ชื่อกิจการ / ร้านค้า..."></div>
+      <div class="form-group"><label>ที่ตั้งสถานประกอบการ</label><input type="text" id="ที่ตั้ง" placeholder="ที่อยู่ / ตำบล / อำเภอ / จังหวัด..."></div>
+      <div class="form-group"><label>หมายเลขโทรศัพท์</label><input type="text" id="โทรศัพท์" placeholder="0X-XXXX-XXXX..."></div>
+    </div>
+  </div>
+
+  <!-- ── รายละเอียดการประกอบกิจการ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">📊</div>รายละเอียดการประกอบกิจการ</div>
+    <div class="form-grid three" style="margin-bottom:14px">
+      <div class="form-group"><label>จำนวนสมาชิก (ราย)</label><input type="number" id="จำนวนสมาชิก" placeholder="0" min="0"></div>
+      <div class="form-group"><label>กำลังการผลิต (ต่อเดือน)</label><input type="text" id="กำลังการผลิต" placeholder="เช่น 100 กก./เดือน"></div>
+      <div class="form-group"><label>รายได้เฉลี่ย (ต่อเดือน)</label><input type="number" id="รายได้เฉลี่ย" placeholder="บาท" min="0"></div>
+    </div>
+    <div class="form-group">
+      <label>ชื่อแบรนด์สินค้าที่ออกตลาด</label>
+      <input type="text" id="ชื่อแบรนด์" placeholder="ชื่อแบรนด์สินค้า...">
+    </div>
+  </div>
+
+  <!-- ── ประเภทผู้ประกอบการ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏷️</div>ประเภทผู้ประกอบการ</div>
+    <div class="checkbox-group">
+      <div class="check-item" id="item-OTOP"           onclick="toggleCheck('OTOP')"><div class="checkmark">✓</div><span>OTOP</span></div>
+      <div class="check-item" id="item-SMEs"           onclick="toggleCheck('SMEs')"><div class="checkmark">✓</div><span>SMEs</span></div>
+      <div class="check-item" id="item-วิสาหกิจชุมชน" onclick="toggleCheck('วิสาหกิจชุมชน')"><div class="checkmark">✓</div><span>วิสาหกิจชุมชน</span></div>
+      <div class="check-item" id="item-StartUp"        onclick="toggleCheck('StartUp')"><div class="checkmark">✓</div><span>Start Up</span></div>
+      <div class="check-item" id="item-บริษัทฯ"        onclick="toggleCheck('บริษัทฯ')"><div class="checkmark">✓</div><span>บริษัท/ห้างหุ้นส่วน/ร้านค้า</span></div>
+    </div>
+    <div class="form-group" style="margin-top:14px">
+      <label>อื่นๆ (โปรดระบุ)</label>
+      <input type="text" id="ประเภทผู้ประกอบการ_อื่นๆ" placeholder="ระบุประเภทอื่น...">
+    </div>
+  </div>
+
+  <!-- ── ข้อมูลสินค้า ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🛍️</div>ข้อมูลสินค้า</div>
+    <div class="form-group" style="margin-bottom:10px"><label>ประเภทสินค้า / บริการ</label></div>
+    <div class="checkbox-group">
+      <div class="check-item" id="item-สินค้าอาหาร"   onclick="toggleCheck('สินค้าอาหาร')"><div class="checkmark">✓</div><span>🍽️ อาหารและเครื่องดื่ม</span></div>
+      <div class="check-item" id="item-สินค้าผ้า"     onclick="toggleCheck('สินค้าผ้า')"><div class="checkmark">✓</div><span>👗 ผ้าและเครื่องแต่งกาย</span></div>
+      <div class="check-item" id="item-สินค้าของใช้"  onclick="toggleCheck('สินค้าของใช้')"><div class="checkmark">✓</div><span>🏠 ของใช้/ของประดับ/ของที่ระลึก</span></div>
+      <div class="check-item" id="item-สินค้าสมุนไพร" onclick="toggleCheck('สินค้าสมุนไพร')"><div class="checkmark">✓</div><span>🌿 สมุนไพรที่ไม่ใช่อาหาร</span></div>
+      <div class="check-item" id="item-สินค้าเกษตร"  onclick="toggleCheck('สินค้าเกษตร')"><div class="checkmark">✓</div><span>🌾 สินค้าเกษตร/เกษตรแปรรูป</span></div>
+    </div>
+    <div class="form-group" style="margin-top:14px">
+      <label>อื่นๆ (โปรดระบุ)</label>
+      <input type="text" id="ประเภทสินค้า_อื่นๆ" placeholder="ระบุประเภทสินค้าอื่น...">
+    </div>
+  </div>
+
+  <!-- ── มาตรฐานที่ได้รับ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏅</div>มาตรฐานที่ได้รับ</div>
+    <div class="checkbox-group">
+      <div class="check-item" id="item-OTOP3-5"        onclick="toggleCheck('OTOP3-5')"><div class="checkmark">✓</div><span>⭐ OTOP 3-5 ดาว</span></div>
+      <div class="check-item" id="item-มผช"            onclick="toggleCheck('มผช')"><div class="checkmark">✓</div><span>มผช.</span></div>
+      <div class="check-item" id="item-อย"             onclick="toggleCheck('อย')"><div class="checkmark">✓</div><span>อย.</span></div>
+      <div class="check-item" id="item-GAP"            onclick="toggleCheck('GAP')"><div class="checkmark">✓</div><span>GAP</span></div>
+      <div class="check-item" id="item-GMP"            onclick="toggleCheck('GMP')"><div class="checkmark">✓</div><span>GMP</span></div>
+      <div class="check-item" id="item-NBLBrand"       onclick="toggleCheck('NBLBrand')"><div class="checkmark">✓</div><span>🏷️ Nong Bua Lamphu Brand</span></div>
+    </div>
+    <div class="form-group" style="margin-top:14px">
+      <label>อื่นๆ (โปรดระบุ)</label>
+      <input type="text" id="มาตรฐาน_อื่นๆ" placeholder="ระบุมาตรฐานอื่น...">
+    </div>
+  </div>
+
+  <!-- ── TIER ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🎯</div>ระดับ TIER</div>
+    <div class="tier-selector">
+      <div class="tier-card" id="tc-1" onclick="selectTier(1)">
+        <div class="t-num n1">TIER 1</div>
+        <div class="t-desc">ผู้ประกอบการพร้อมส่งออก<br>มาตรฐานสากล · B2B ต่างประเทศ</div>
+      </div>
+      <div class="tier-card" id="tc-2" onclick="selectTier(2)">
+        <div class="t-num n2">TIER 2</div>
+        <div class="t-desc">ผู้ประกอบการกำลังพัฒนา<br>มาตรฐานระดับประเทศ · B2C</div>
+      </div>
+      <div class="tier-card" id="tc-3" onclick="selectTier(3)">
+        <div class="t-num n3">TIER 3</div>
+        <div class="t-desc">ผู้ประกอบการเริ่มต้น<br>ก่อตั้ง ≤ 5 ปี · ช่องทางจำกัด</div>
+      </div>
+    </div>
+    <div class="tier-hint">💡 ไม่แน่ใจว่าควรอยู่ TIER ใด?
+      <a href="tier_assessment.html" target="_blank">เปิดเครื่องมือประเมิน TIER อัตโนมัติ ↗</a>
+    </div>
+  </div>
+
+  <!-- ── หมายเหตุ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">📝</div>หมายเหตุ</div>
+    <div class="form-group">
+      <textarea id="หมายเหตุ" placeholder="หมายเหตุเพิ่มเติม (ถ้ามี)..."></textarea>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:8px">
+    <button class="btn-submit" id="btnSubmit" onclick="handleSubmit()">
+      <span id="btnText">💾 บันทึกข้อมูล</span>
+    </button>
+  </div>
+  </div><!-- /sub-est-form -->
+
+  <div id="sub-est-view" style="display:none">
+    <div class="panel">
+      <div class="panel-title"><div class="icon">📋</div>ข้อมูลผู้ประกอบการทั้งหมด</div>
+      <div class="filter-bar">
+        <label>🔍 ค้นหา:</label>
+        <input class="filter-input" id="fSearch" placeholder="ชื่อสถานประกอบการ..." oninput="applyFilter()">
+        <label>TIER:</label>
+        <select class="filter-select" id="fTier" onchange="applyFilter()">
+          <option value="">ทั้งหมด</option>
+          <option value="TIER 1">TIER 1</option>
+          <option value="TIER 2">TIER 2</option>
+          <option value="TIER 3">TIER 3</option>
+          <option value="ยังไม่ระบุ">ยังไม่ระบุ</option>
+        </select>
+        <label>ประเภทสินค้า:</label>
+        <select class="filter-select" id="fType" onchange="applyFilter()">
+          <option value="">ทั้งหมด</option>
+        </select>
+        <label>ช่องทาง:</label>
+        <select class="filter-select" id="fChannel" onchange="applyFilter()">
+          <option value="">ทั้งหมด</option>
+          <option value="export">ส่งออกต่างประเทศ</option>
+          <option value="dom">ในประเทศ</option>
+          <option value="online">ออนไลน์</option>
+          <option value="local">ขายในพื้นที่</option>
+        </select>
+        <span class="filter-count" id="filterCount"></span>
+        <button class="btn-clear-filter" onclick="clearFilter()">✕ ล้าง</button>
+        <button class="btn-refresh" onclick="loadTableData()">🔄 รีเฟรช</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th><th>แก้ไข</th>
+            <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+            <th>ชื่อสถานประกอบการ</th><th>ที่ตั้ง</th><th>โทรศัพท์</th>
+            <th>สมาชิก</th><th>กำลังผลิต</th><th>รายได้/เดือน</th>
+            <th>แบรนด์</th><th>ประเภทผู้ประกอบการ</th>
+            <th>ประเภทสินค้า</th><th>มาตรฐาน</th>
+            <th>TIER</th><th>หมายเหตุ</th><th>วันที่บันทึก</th>
+          </tr></thead>
+          <tbody id="tableBody">
+            <tr><td colspan="32"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- /sub-est-view -->

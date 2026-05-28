@@ -1,0 +1,82 @@
+  <!-- ── ข้อมูลผู้ประกอบการ ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🏭</div>ข้อมูลผู้ประกอบการ</div>
+    <div class="filter-bar">
+      <label>🔍 ค้นหา:</label>
+      <input class="filter-input" id="ovSearch1" placeholder="ชื่อสถานประกอบการ..." oninput="applyOvFilter1()">
+      <span class="filter-count" id="ovCount1"></span>
+      <button class="btn-refresh" onclick="loadOvData1()">🔄 รีเฟรช</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th>
+          <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+          <th>ชื่อสถานประกอบการ</th><th>ที่ตั้ง</th><th>โทรศัพท์</th>
+          <th>สมาชิก</th><th>กำลังผลิต</th><th>รายได้/เดือน</th>
+          <th>แบรนด์</th><th>ประเภทผู้ประกอบการ</th>
+          <th>ประเภทสินค้า</th><th>มาตรฐาน</th>
+          <th>TIER</th><th>หมายเหตุ</th><th>วันที่บันทึก</th>
+        </tr></thead>
+        <tbody id="ovBody1">
+          <tr><td colspan="17"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── ผลการดำเนินงาน ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">📋</div>ผลการดำเนินงาน</div>
+    <div class="filter-bar">
+      <label>🔍 ค้นหา:</label>
+      <input class="filter-input" id="ovSearch2" placeholder="ชื่อสถานประกอบการ..." oninput="applyOvFilter2()">
+      <span class="filter-count" id="ovCount2"></span>
+      <button class="btn-refresh" onclick="loadOvData2()">🔄 รีเฟรช</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th>
+          <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+          <th>ชื่อสถานประกอบการ</th>
+          <th>อบรม_ช่วงเวลา</th><th>อบรม_สถานที่</th><th>อบรม_หัวข้อ</th><th>อบรม_หน่วยงาน</th>
+          <th>ดูงาน_ช่วงเวลา</th><th>ดูงาน_สถานที่</th><th>ดูงาน_หัวข้อ</th><th>ดูงาน_หน่วยงาน</th><th>ดูงาน_ผล</th>
+          <th>ช่องทางจำหน่าย</th>
+          <th>หมายเหตุ</th><th>วันที่บันทึก</th>
+        </tr></thead>
+        <tbody id="ovBody2">
+          <tr><td colspan="17"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── การส่งเสริม/พัฒนา ── -->
+  <div class="panel">
+    <div class="panel-title"><div class="icon">🚀</div>การส่งเสริม / พัฒนาผู้ประกอบการ</div>
+    <div class="filter-bar">
+      <label>🔍 ค้นหา:</label>
+      <input class="filter-input" id="ovSearch3" placeholder="ชื่อสถานประกอบการ..." oninput="applyOvFilter3()">
+      <span class="filter-count" id="ovCount3"></span>
+      <button class="btn-refresh" onclick="loadOvData3()">🔄 รีเฟรช</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th>
+          <th>ผู้ใส่ข้อมูล</th><th>ตำแหน่ง</th><th>หน่วยงาน</th>
+          <th>ชื่อสถานประกอบการ</th>
+          <th>หมวด 1 การตลาด</th>
+          <th>หมวด 2 ผลิตภัณฑ์</th>
+          <th>หมวด 3 การผลิต</th>
+          <th>หมวด 4 รวมกลุ่ม</th>
+          <th>หมวด 5 การบริหาร</th>
+          <th>หมายเหตุ</th><th>วันที่บันทึก</th>
+        </tr></thead>
+        <tbody id="ovBody3">
+          <tr><td colspan="12"><div class="empty-state"><div class="big-icon">📋</div><div>กดรีเฟรชเพื่อโหลดข้อมูล</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
