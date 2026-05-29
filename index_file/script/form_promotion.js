@@ -14,7 +14,9 @@ function toggleProCheck(id) {
 // ── Submit ─────────────────────────────────────────
 async function handleSubmitPro() {
   const biz = getVal('pro-biz');
+  const rep = getVal('pro-rep');
   if (!biz) { showToast('⚠️ กรุณากรอกชื่อสถานประกอบการ', true); return; }
+  if (!rep) { showToast('⚠️ กรุณากรอกชื่อผู้ใส่ข้อมูล', true); return; }
 
   const btn = document.getElementById('btnSubmitPro');
   const txt = document.getElementById('btnTextPro');

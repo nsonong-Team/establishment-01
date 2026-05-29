@@ -103,3 +103,44 @@ function clearProFilter() {
   document.getElementById('proSearch').value = '';
   applyProFilter();
 }
+
+
+// ── Biz Name Autocomplete ──────────────────────────
+function filterProBizName() {
+  const q  = (getVal('pro-biz') || '').toLowerCase();
+  const dd = document.getElementById('proBizDropdown');
+
+  if (!q || !allRows.length) { dd.style.display = 'none'; return; }
+
+  const matches = allRows
+    .map(r => r[colMap.name])
+    .filter(Boolean)
+    .filter((v, i, a) => a.indexOf(v) === i)
+    .filter(name => name.toLowerCase().includes(q))
+    .slice(0, 8);
+
+  if (matches.length === 0) { dd.style.display = 'none'; return; }
+
+  dd.innerHTML = matches.map(name => `
+    <div onclick="selectProBizName('${name.replace(/'/g, "\\'")}')"
+         style="padding:10px 14px;cursor:pointer;font-size:13.5px;
+                border-bottom:1px solid #f0f0f0;transition:.15s"
+         onmouseover="this.style.background='#f0f6ff'"
+         onmouseout="this.style.background=''">
+      ${name}
+    </div>
+  `).join('');
+  dd.style.display = 'block';
+}
+
+function selectProBizName(name) {
+  document.getElementById('pro-biz').value = name;
+  document.getElementById('proBizDropdown').style.display = 'none';
+}
+
+document.addEventListener('click', function(e) {
+  const dd = document.getElementById('proBizDropdown');
+  if (dd && !dd.contains(e.target) && e.target.id !== 'pro-biz') {
+    dd.style.display = 'none';
+  }
+});

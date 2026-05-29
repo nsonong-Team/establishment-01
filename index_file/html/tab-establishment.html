@@ -8,10 +8,6 @@
   <!-- ── ผู้ใส่ข้อมูล ── -->
   <div class="panel">
     <div class="panel-title"><div class="icon">👤</div>ชื่อผู้ใส่ข้อมูล</div>
-    <div class="search-wrap" id="repSearchWrap" style="position:relative;margin-bottom:10px">
-      <input type="text" id="repSearch" placeholder="พิมพ์ชื่อเพื่อค้นหา..." oninput="filterRep()" autocomplete="off">
-      <div class="dropdown" id="repDropdown"></div>
-    </div>
     <div class="form-grid three">
       <div class="form-group"><label>ชื่อผู้ใส่ข้อมูล</label><input type="text" id="ชื่อใส่ข้อมูล" placeholder="ชื่อ - นามสกุล..."></div>
       <div class="form-group"><label>ตำแหน่ง</label><input type="text" id="ตำแหน่ง" placeholder="ตำแหน่งงาน..."></div>
@@ -23,7 +19,16 @@
   <div class="panel">
     <div class="panel-title"><div class="icon">🏭</div>ข้อมูลสถานประกอบการ</div>
     <div class="form-grid">
-      <div class="form-group"><label>ชื่อสถานประกอบการ <span class="required">*</span></label><input type="text" id="ชื่อสถานประกอบการ" placeholder="ชื่อกิจการ / ร้านค้า..."></div>
+      <div class="form-group" style="position:relative">
+        <label>ชื่อสถานประกอบการ <span class="required">*</span></label>
+        <input type="text" id="ชื่อสถานประกอบการ" placeholder="ชื่อกิจการ / ร้านค้า..."
+              oninput="filterBizName()" autocomplete="off">
+        <div id="bizNameDropdown" style="
+          display:none; position:absolute; top:100%; left:0; right:0; z-index:999;
+          background:#fff; border:1px solid #cdd6e0; border-radius:8px;
+          box-shadow:0 4px 16px rgba(0,0,0,0.1); max-height:200px; overflow-y:auto;
+        "></div>
+      </div>
       <div class="form-group"><label>ที่ตั้งสถานประกอบการ</label><input type="text" id="ที่ตั้ง" placeholder="ที่อยู่ / ตำบล / อำเภอ / จังหวัด..."></div>
       <div class="form-group"><label>หมายเลขโทรศัพท์</label><input type="text" id="โทรศัพท์" placeholder="0X-XXXX-XXXX..."></div>
     </div>

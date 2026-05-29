@@ -49,4 +49,16 @@ Promise.all(
         document.getElementById(item[0]).innerHTML = html;
       });
   })
-).then(loadScriptsSequentially);
+).then(loadScriptsSequentially).then(function() {
+  // scripts โหลดครบแล้ว — โหลด dashboard + biz names
+  loadDashboard();
+
+  fetch(GAS_URL + '?action=getSheetData')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.headers && data.rows) {
+        colMap  = getColMap(buildIdx(data.headers));
+        allRows = data.rows;
+      }
+    });
+});
