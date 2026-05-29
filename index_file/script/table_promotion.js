@@ -84,6 +84,7 @@ function applyProFilter() {
   tbody.innerHTML = filtered.map((r, i) => `<tr>
     <td><strong>${r[C.no]  || ''}</strong></td>
     <td><button class="btn-edit" onclick="openProEdit(this,${i})">✏️ แก้ไข</button></td>
+    <td><button class="btn-delete" onclick="deleteProRow(${r[C.no]})">🗑️ ลบ</button></td>
     <td>${r[C.rep] || '-'}</td>
     <td>${r[C.pos] || '-'}</td>
     <td>${r[C.ag]  || '-'}</td>
@@ -144,3 +145,24 @@ document.addEventListener('click', function(e) {
     dd.style.display = 'none';
   }
 });
+
+
+async function deleteProRow(rowNo) {
+  if (!confirm('ต้องการลบข้อมูลลำดับที่ ' + rowNo + ' ใช่หรือไม่?')) return;
+
+  try {
+    const res    = await fetch(PRO_GAS_URL, {
+      method: 'POST',
+      body: JSON.stringify({ action: 'delete', rowNum: rowNo })
+    });
+    const result = await res.json();
+    if (result.success) {
+      showToast('✅ ลบข้อมูลสำเร็จแล้ว');
+      loadProTableData();
+    } else {
+      showToast('❌ ' + result.error, true);
+    }
+  } catch(e) {
+    showToast('❌ ' + e.message, true);
+  }
+}

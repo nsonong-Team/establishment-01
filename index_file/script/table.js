@@ -146,6 +146,7 @@ function applyFilter() {
   tbody.innerHTML = filtered.map((r, i) => `<tr>
     <td><strong>${r[C.no]  || ''}</strong></td>
     <td><button class="btn-edit" onclick="openEdit(this,${i})">✏️ แก้ไข</button></td>
+    <td><button class="btn-delete" onclick="deleteRow(${r[C.no]})">🗑️ ลบ</button></td>
     <td>${r[C.rep]  || '-'}</td>
     <td>${r[C.pos]  || '-'}</td>
     <td>${r[C.ag]   || '-'}</td>
@@ -193,4 +194,25 @@ function clearFilter() {
     document.getElementById(id).value = '';
   });
   applyFilter();
+}
+
+
+async function deleteRow(rowNo) {
+  if (!confirm('ต้องการลบข้อมูลลำดับที่ ' + rowNo + ' ใช่หรือไม่?')) return;
+
+  try {
+    const res    = await fetch(GAS_URL, {
+      method: 'POST',
+      body: JSON.stringify({ action: 'delete', rowNum: rowNo })
+    });
+    const result = await res.json();
+    if (result.success) {
+      showToast('✅ ลบข้อมูลสำเร็จแล้ว');
+      loadTableData();
+    } else {
+      showToast('❌ ' + result.error, true);
+    }
+  } catch(e) {
+    showToast('❌ ' + e.message, true);
+  }
 }

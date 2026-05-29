@@ -13,6 +13,7 @@ function doPost(e) {
   const data = JSON.parse(e.postData.contents);
   if (data.action === 'submit') return respond(submitData(data));
   if (data.action === 'update') return respond(updateRow(data));
+  if (data.action === 'delete') return respond(deleteRow(data.rowNum));
   return respond({ success: false, error: 'unknown action' });
 }
 
@@ -185,6 +186,35 @@ function updateRow(updateData) {
         sheet.getRange(targetRow, i + 1).setValue(map[h]);
       }
     });
+
+    return { success: true };
+  } catch(e) {
+    return { success: false, error: e.message };
+  }
+}
+
+
+function deleteRow(rowNum) {
+  try {
+    const ss    = SpreadsheetApp.openById(SHEET_ID);
+    const sheet = ss.getSheetByName('ผลการดำเนินงาน');
+    if (!sheet) return { success: false, error: 'ไม่พบ Sheet' };
+
+    const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    const noCol   = headers.indexOf('ลำดับที่') + 1;
+    const allNos  = sheet.getRange(2, noCol, sheet.getLastRow() - 1, 1).getValues();
+    const rowIdx  = allNos.findIndex(r => r[0] == rowNum);
+    if (rowIdx === -1) return { success: false, error: 'ไม่พบแถวลำดับที่ ' + rowNum };
+
+    sheet.deleteRow(rowIdx + 2);
+
+    // ── reorder ลำดับที่ใหม่ ──────────────────────
+    const lastRow = sheet.getLastRow();
+    if (lastRow >= 2) {
+      for (let i = 2; i <= lastRow; i++) {
+        sheet.getRange(i, noCol).setValue(i - 1);
+      }
+    }
 
     return { success: true };
   } catch(e) {

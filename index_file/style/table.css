@@ -140,3 +140,27 @@ tbody tr:hover           { background: #e8f0fe; }
 }
 
 .btn-refresh:hover { background: #c5d8f8; }
+
+
+.btn-delete {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  background: #fff;
+  color: #c62828;
+  border: 1.5px solid #ef9a9a;
+  border-radius: 6px;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.btn-delete:hover {
+  background: #c62828;
+  color: #fff;
+  border-color: #c62828;
+}
