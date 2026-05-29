@@ -50,8 +50,6 @@ Promise.all(
       });
   })
 ).then(loadScriptsSequentially).then(function() {
-  // scripts โหลดครบแล้ว — โหลด dashboard + biz names
-  loadDashboard();
 
   fetch(GAS_URL + '?action=getSheetData')
     .then(function(r) { return r.json(); })
@@ -60,5 +58,6 @@ Promise.all(
         colMap  = getColMap(buildIdx(data.headers));
         allRows = data.rows;
       }
+      loadDashboard();
     });
 });
