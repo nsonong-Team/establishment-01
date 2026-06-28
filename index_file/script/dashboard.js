@@ -84,6 +84,7 @@ async function loadDashboard() {
   // โหลดข้อมูล activity และ promotion แยก
   loadDashAct();
   loadDashPro();
+  loadTierHistory();
 }
 
 // ── ผลการดำเนินงาน ────────────────────────────────
@@ -201,6 +202,42 @@ async function loadDashPro() {
     });
     renderBar('proHmwdChart', hmwdCnt, 5, '#1565c0');
 
+  } catch(e) { /* silent */ }
+}
+
+// ── ประวัติการแก้ไข TIER ──────────────────────────
+async function loadTierHistory() {
+  const el = document.getElementById('tierHistoryTable');
+  if (!el) return;
+  try {
+    const res  = await fetch(GAS_URL + '?action=getTierHistory');
+    const data = await res.json();
+
+    if (!data.rows || data.rows.length === 0) {
+      el.innerHTML = '<div style="color:#90a4ae;font-size:13px">ยังไม่มีประวัติการเปลี่ยนแปลง TIER</div>';
+      return;
+    }
+
+    const tierBadge = t => {
+      const cls = t === 'TIER 1' ? '#f57c00' : t === 'TIER 2' ? '#1565c0' : t === 'TIER 3' ? '#6a1b9a' : '#90a4ae';
+      return `<span style="background:${cls};color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600">${t}</span>`;
+    };
+
+    el.innerHTML = `<div class="table-wrap"><table>
+      <thead><tr>
+        <th>#</th><th>ชื่อสถานประกอบการ</th>
+        <th>TIER เดิม</th><th>TIER ใหม่</th><th>วันที่แก้ไข</th>
+      </tr></thead>
+      <tbody>
+        ${data.rows.slice(0, 20).map(r => `<tr>
+          <td>${r[0]}</td>
+          <td><strong>${r[1]}</strong></td>
+          <td>${tierBadge(r[2])}</td>
+          <td>${tierBadge(r[3])}</td>
+          <td style="font-size:12px;color:#546e7a">${r[4]}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table></div>`;
   } catch(e) { /* silent */ }
 }
 

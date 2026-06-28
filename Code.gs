@@ -6,6 +6,9 @@ function doGet(e) {
   if (e && e.parameter && e.parameter.action === 'getSheetData') {
     return respond(getSheetData());
   }
+  if (e && e.parameter && e.parameter.action === 'getTierHistory') {
+    return respond(getTierHistory());
+  }
   return HtmlService.createHtmlOutputFromFile('Index')
     .setTitle('ฐานข้อมูลผู้ประกอบการฯ')
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
@@ -41,6 +44,7 @@ function submitData(formData) {
         'ชื่อสถานประกอบการ',
         'ที่ตั้งสถานประกอบการ',
         'หมายเลขโทรศัพท์',
+        'ชื่อผู้ประกอบการ',
         'จำนวนสมาชิก',
         'กำลังการผลิต',
         'รายได้เฉลี่ย',
@@ -88,6 +92,7 @@ function submitData(formData) {
       formData.ชื่อสถานประกอบการ || '',
       formData.ที่ตั้ง            || '',
       formData.โทรศัพท์           || '',
+      formData.ชื่อผู้ประกอบการ  || '',
       formData.จำนวนสมาชิก       || '',
       formData.กำลังการผลิต      || '',
       formData.รายได้เฉลี่ย      || '',
@@ -160,6 +165,9 @@ function updateRow(updateData) {
     if (rowIdx === -1) return { success: false, error: 'ไม่พบแถวลำดับที่ ' + rowNum };
     const targetRow = rowIdx + 2;
 
+    const tierColIdx = headers.indexOf('ระดับ TIER');
+    const oldTier = tierColIdx >= 0 ? sheet.getRange(targetRow, tierColIdx + 1).getValue() : '';
+
     const yes = v => v ? 'ใช่' : 'ไม่';
 
     const map = {
@@ -169,6 +177,7 @@ function updateRow(updateData) {
       'ชื่อสถานประกอบการ':    updateData.ชื่อสถานประกอบการ || '',
       'ที่ตั้งสถานประกอบการ':  updateData.ที่ตั้ง           || '',
       'หมายเลขโทรศัพท์':      updateData.โทรศัพท์          || '',
+      'ชื่อผู้ประกอบการ':     updateData.ชื่อผู้ประกอบการ || '',
       'จำนวนสมาชิก':          updateData.จำนวนสมาชิก      || '',
       'กำลังการผลิต':         updateData.กำลังการผลิต     || '',
       'รายได้เฉลี่ย':         updateData.รายได้เฉลี่ย     || '',
@@ -202,6 +211,11 @@ function updateRow(updateData) {
       }
     });
 
+    const newTier = updateData.tier || '';
+    if (oldTier !== newTier) {
+      logTierChange(updateData.ชื่อสถานประกอบการ || '', oldTier, newTier);
+    }
+
     return { success: true };
   } catch(e) {
     return { success: false, error: e.message };
@@ -223,7 +237,9 @@ function updateTierByName(bizName, tier) {
     const rowIdx = data.findIndex(r => r[0] === bizName);
     if (rowIdx === -1) return { success: false, error: 'ไม่พบชื่อ: ' + bizName };
 
+    const oldTier = sheet.getRange(rowIdx + 2, tierCol).getValue();
     sheet.getRange(rowIdx + 2, tierCol).setValue(tier);
+    logTierChange(bizName, oldTier, tier);
     return { success: true };
   } catch(e) {
     return { success: false, error: e.message };
@@ -255,5 +271,44 @@ function deleteRow(rowNum) {
     return { success: true };
   } catch(e) {
     return { success: false, error: e.message };
+  }
+}
+
+function logTierChange(bizName, oldTier, newTier) {
+  if (oldTier === newTier) return;
+  try {
+    const ss = SpreadsheetApp.openById(SHEET_ID);
+    let hist = ss.getSheetByName('ประวัติ TIER');
+    if (!hist) {
+      hist = ss.insertSheet('ประวัติ TIER');
+      const h = ['ลำดับที่', 'ชื่อสถานประกอบการ', 'TIER เดิม', 'TIER ใหม่', 'วันที่แก้ไข'];
+      hist.getRange(1, 1, 1, h.length).setValues([h]);
+      hist.getRange(1, 1, 1, h.length)
+        .setBackground('#0d47a1').setFontColor('#ffffff').setFontWeight('bold');
+      hist.setFrozenRows(1);
+    }
+    const nextRow = hist.getLastRow() + 1;
+    hist.getRange(nextRow, 1, 1, 5).setValues([[
+      nextRow - 1,
+      bizName,
+      oldTier || '(ยังไม่ระบุ)',
+      newTier || '(ยังไม่ระบุ)',
+      new Date().toLocaleString('th-TH', {
+        year: 'numeric', month: 'long', day: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      })
+    ]]);
+  } catch(e) { /* silent */ }
+}
+
+function getTierHistory() {
+  try {
+    const ss   = SpreadsheetApp.openById(SHEET_ID);
+    const hist = ss.getSheetByName('ประวัติ TIER');
+    if (!hist || hist.getLastRow() <= 1) return { rows: [] };
+    const all = hist.getRange(1, 1, hist.getLastRow(), 5).getValues();
+    return { rows: all.slice(1).reverse() };
+  } catch(e) {
+    return { rows: [] };
   }
 }

@@ -149,6 +149,64 @@
       <div class="filter-bar">
         <label>🔍 ค้นหา:</label>
         <input class="filter-input" id="proSearch" placeholder="ชื่อสถานประกอบการ / ผู้ใส่ข้อมูล..." oninput="applyProFilter()">
+        <label>หัวข้อพัฒนา:</label>
+        <select class="filter-select" id="proItemFilter" onchange="applyProFilter()" style="min-width:200px">
+          <option value="">ทั้งหมด</option>
+          <optgroup label="หมวด 1 การตลาด">
+            <option value="m1_plan">การวางแผนกลยุทธ์การตลาด</option>
+            <option value="m1_brand">การสร้างแบรนด์ (Branding)</option>
+            <option value="m1_pack">การออกแบบบรรจุภัณฑ์</option>
+            <option value="m1_online">การเจาะตลาดออนไลน์</option>
+            <option value="m1_expo">การเข้าร่วมงานแสดงสินค้า</option>
+            <option value="m1_analyze">การวิเคราะห์ตลาด</option>
+            <option value="m1_identity">การสร้างอัตลักษณ์สินค้า</option>
+            <option value="m1_local">การส่งเสริมภูมิปัญญาท้องถิ่น</option>
+            <option value="m1_network">การสร้างเครือข่ายธุรกิจ</option>
+            <option value="m1_ai">การตลาดออนไลน์เชิง AI</option>
+            <option value="m1_bcg">การสร้างแบรนด์ยั่งยืน BCG</option>
+            <option value="m1_bigdata">Big Data และ AI</option>
+            <option value="m1_green">การตลาดสีเขียว</option>
+            <option value="m1_qr">การตลาดด้วย QR Code</option>
+          </optgroup>
+          <optgroup label="หมวด 2 ผลิตภัณฑ์/มาตรฐาน">
+            <option value="m2_agri">การพัฒนาคุณภาพผลผลิต</option>
+            <option value="m2_process">การแปรรูปสินค้าเกษตร</option>
+            <option value="m2_gap">GAP/Organic</option>
+            <option value="m2_iso">มอก./ISO</option>
+            <option value="m2_fda">อย./GMP/HACCP</option>
+            <option value="m2_formula">สูตรผลิตภัณฑ์</option>
+            <option value="m2_lab">Lab Test</option>
+            <option value="m2_hygiene">สุขอนามัยการผลิต</option>
+            <option value="m2_label">ฉลากโภชนาการ</option>
+            <option value="m2_risk">ความเสี่ยงสุขภาพ</option>
+            <option value="m2_otop">OTOP</option>
+            <option value="m2_design">ออกแบบผลิตภัณฑ์</option>
+          </optgroup>
+          <optgroup label="หมวด 3 การผลิต">
+            <option value="m3_cost">ต้นทุนการผลิต</option>
+            <option value="m3_agtech">เทคโนโลยีเกษตรสมัยใหม่</option>
+            <option value="m3_lean">Lean/Productivity</option>
+            <option value="m3_std">มาตรฐานโรงงาน</option>
+            <option value="m3_machine">เครื่องจักรและเทคโนโลยี</option>
+            <option value="m3_env">สิ่งแวดล้อมโรงงาน</option>
+            <option value="m3_local">อุตสาหกรรมท้องถิ่น</option>
+            <option value="m3_ind40">อุตสาหกรรม 4.0</option>
+            <option value="m3_link">เชื่อมโยงการผลิต</option>
+          </optgroup>
+          <optgroup label="หมวด 4 รวมกลุ่ม">
+            <option value="m4_farmer">รวมกลุ่มเกษตรกร</option>
+            <option value="m4_group">พัฒนาศักยภาพกลุ่ม</option>
+            <option value="m4_learn">แหล่งเรียนรู้ชุมชน</option>
+            <option value="m4_skill">พัฒนาทักษะแรงงาน</option>
+          </optgroup>
+          <optgroup label="หมวด 5 การบริหาร">
+            <option value="m5_trademark">เครื่องหมายการค้า</option>
+            <option value="m5_account">บัญชีครัวเรือน</option>
+            <option value="m5_fund">แหล่งทุน/สินเชื่อ</option>
+            <option value="m5_tax">ภาษี/บัญชี/กฎหมาย</option>
+            <option value="m5_consult">คำปรึกษาการบริหาร</option>
+          </optgroup>
+        </select>
         <span class="filter-count" id="proFilterCount"></span>
         <button class="btn-clear-filter" onclick="clearProFilter()">✕ ล้าง</button>
         <button class="btn-refresh" onclick="loadProTableData()">🔄 รีเฟรช</button>

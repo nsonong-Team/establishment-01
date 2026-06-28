@@ -27,12 +27,14 @@ async function loadProTableData() {
 
 // ── Apply filter & render ──────────────────────────
 function applyProFilter() {
-  const C      = proColMap;
-  const search = (document.getElementById('proSearch').value || '').toLowerCase();
+  const C        = proColMap;
+  const search   = (document.getElementById('proSearch').value || '').toLowerCase();
+  const itemKey  = (document.getElementById('proItemFilter') || {}).value || '';
 
   const filtered = proAllRows.filter(r => {
     if (search && !(r[C.biz] || '').toLowerCase().includes(search) &&
                   !(r[C.rep] || '').toLowerCase().includes(search)) return false;
+    if (itemKey && r[C[itemKey]] !== 'ใช่') return false;
     return true;
   });
 
@@ -102,6 +104,8 @@ function applyProFilter() {
 // ── Clear filter ───────────────────────────────────
 function clearProFilter() {
   document.getElementById('proSearch').value = '';
+  const f = document.getElementById('proItemFilter');
+  if (f) f.value = '';
   applyProFilter();
 }
 

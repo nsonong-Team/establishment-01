@@ -23,6 +23,7 @@ function openEdit(btn, filteredIdx) {
   document.getElementById('e-name').value     = r[C.name] || '';
   document.getElementById('e-loc').value      = r[C.loc]  || '';
   document.getElementById('e-phone').value    = r[C.phone]|| '';
+  document.getElementById('e-owner').value    = r[C.owner]|| '';
   document.getElementById('e-member').value   = r[C.member]|| '';
   document.getElementById('e-capacity').value = r[C.capacity]|| '';
   document.getElementById('e-income').value   = r[C.income]|| '';
@@ -110,6 +111,7 @@ async function saveEdit() {
     ชื่อสถานประกอบการ: document.getElementById('e-name').value.trim(),
     ที่ตั้ง:            document.getElementById('e-loc').value.trim(),
     โทรศัพท์:          document.getElementById('e-phone').value.trim(),
+    ชื่อผู้ประกอบการ:  document.getElementById('e-owner').value.trim(),
     จำนวนสมาชิก:      document.getElementById('e-member').value.trim(),
     กำลังการผลิต:     document.getElementById('e-capacity').value.trim(),
     รายได้เฉลี่ย:     document.getElementById('e-income').value.trim(),

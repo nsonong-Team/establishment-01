@@ -43,6 +43,7 @@ async function quickUpdateTier(rowNo, selectEl) {
     ชื่อสถานประกอบการ: row[C.name]   || '',
     ที่ตั้ง:           row[C.loc]    || '',
     โทรศัพท์:         row[C.phone]  || '',
+    ชื่อผู้ประกอบการ: row[C.owner]  || '',
     จำนวนสมาชิก:      row[C.member]   || '',
     กำลังการผลิต:     row[C.capacity] || '',
     รายได้เฉลี่ย:     row[C.income]   || '',
@@ -153,6 +154,7 @@ function applyFilter() {
     <td><strong>${r[C.name] || '-'}</strong></td>
     <td>${r[C.loc]   || '-'}</td>
     <td>${r[C.phone] || '-'}</td>
+    <td>${r[C.owner] || '-'}</td>
     <td>${r[C.member]   || '-'}</td>
     <td>${r[C.capacity] || '-'}</td>
     <td>${r[C.income]   || '-'}</td>
